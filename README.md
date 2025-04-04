@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SIH_2023_V-STARS
 
 ## Meet The Team
@@ -66,3 +67,6 @@ Your React project is now set up with both frontend and backend components. You 
 If you encounter any issues or have questions, please refer to the project's documentation or seek help from the development team.
 
 Feel free to explore and enjoy working on your new React project!
+=======
+# Supe-Salyers
+>>>>>>> 6da1142c0e1e7a8bb4359eb8114204c2ae93217d
