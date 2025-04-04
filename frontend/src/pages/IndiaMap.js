@@ -123,6 +123,7 @@ const IndiaMap = () => {
         <p>Rajasthan</p>
         <p>Uttar Pradesh</p>
         <p>Tamil Nadu</p>
+        
       </div>
     </div>
   );
