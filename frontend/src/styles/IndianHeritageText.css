@@ -1,0 +1,29 @@
+/* .text3d{
+    background: transparent !important;
+    position: absolute;
+}
+
+.text3d canvas{
+    top: -35% !important;
+    position: relative !important;
+    z-index: 1 !important;
+    scale: 1.2 !important;
+} */
+
+.text3d canvas {
+    position: relative;
+    top: -20%;
+    transform: scale(1.2);
+    z-index: 3;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1.2);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.25);
+    }
+}
