@@ -1,9 +1,10 @@
 import "./styles.css";
 
-import { BsShop } from "react-icons/bs"
-import {BiSolidUpArrowAlt} from "react-icons/bi"
-
-import {GiIndiaGate} from "react-icons/gi"
+import { MdStorefront } from "react-icons/md";
+import { BiSolidUpArrowAlt } from "react-icons/bi"
+import { RiMapPin2Line } from "react-icons/ri";
+import { TbTempleHindu } from "react-icons/tb"
+import { GiIndiaGate } from "react-icons/gi"
 function Navbarjs() {
   return (
     <nav class="menu" id="menu">
@@ -16,19 +17,19 @@ function Navbarjs() {
         }}
       >
         <li class="menu-item">
-          <a class="" href="/india"><GiIndiaGate/></a>
+        <a href="/india"><RiMapPin2Line  /></a>
         </li>
         <li class="menu-item">
-          <a lass="fa-solid fa-shop" href="/trade"><BsShop /></a>
+        <a href="/trade"><MdStorefront /></a>
         </li>
         <li class="menu-item">
           <a class="flex items-center" href="/india">  </a>
         </li>
         <li class="menu-item">
           <a class="" href="#top-section"><BiSolidUpArrowAlt /></a>
-        </li> 
+        </li>
         <li class="menu-item">
-          <a class="fa fa-phone" href="#my-footer"></a>
+          <a class="fa fa-users" href="#my-footer"></a>
         </li>
       </ul>
     </nav>
