@@ -1,55 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&family=Josefin+Slab&family=Mukta:wght@300&family=Oswald:wght@300&family=Playpen+Sans:wght@300&family=Poppins:wght@300&family=Yuji+Hentaigana+Akari&display=swap');
 
-.WeKnow li{
+
+.WeKnow li {
     font-family: 'Kelly Slab', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    list-style-type: none;
+    transition: transform 0.2s ease;
+}
+
+.WeKnow li:hover {
+    transform: translateX(5px);
+    color: #000;
 }
 
 #my-footer *{
     backdrop-filter: blur(2px);
 }
-.Footer-Title{
-    font-family: 'Inknut Antiqua', serif;
+.Footer-Title {
+    font-size: 1.8rem;
     color: black;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
 
-.footer-subtitle{
-    font-family: 'Inknut Antiqua', serif;
-    color: black;
-    font-size: 20px;
-}
-
-.footer-subtitle-content{
-    font-family: 'Inknut Antiqua', serif;
-    color: black;
-    font-size: 16px;
+.footer-subtitle {
+    font-size: 1.6rem;
+    color: #222;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
     text-align: left;
+    
+}
+
+.footer-subtitle-content {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #444;
+    max-width: 300px;
 }
 
 .content{
     font-family: 'Kelly Slab', sans-serif;
     font-size: 16px;
     color: black;
-    padding: 10%;
-    text-decoration: underline;
+    padding: 1rem;
+    /* text-decoration: underline; */
     line-height: 135%;
-    
-    
+    white-space: nowrap;
+    overflow: hidden; 
 }
 
-.content a{
+.content a {
     color: #2b2b2b;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.content :not(li:nth-child(1)){
+.content a:hover {
+    color: #000;
+}
+
+.content :not(li:nth-child(1)) {
     margin-top: 10px;
 }
 
-.company-name{
-    text-align: left;
-    padding: 10%;
-    font-size: 32px;
-    color: black;
+.company-name {
     font-family: 'Josefin Slab', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+    flex: 1 1 100%;
+    margin-top: 2rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
 }

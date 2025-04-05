@@ -24,7 +24,7 @@ export const Footer = () => {
       id: "4",
       name: "Kaushal Siripuram",
       LI: "https://www.linkedin.com/in/siripuram-kaushal-9b7844350/",
-      GH: "#",
+      GH: "https://github.com/Kaushal1201",
     },
   ];
 
@@ -35,18 +35,18 @@ export const Footer = () => {
       style={{
         fontFamily: "Inknut Antiqua",
         height: "80vh",
-        borderTop: "2px solid black",
+        // borderTop: "2px solid black",
         background: "linear-gradient(to bottom, #FF9933, #ffffff, #138808)", // saffron → white → green
         color: "#000", // black text for readability on white
       }}
     >
       <h1
         style={{
-          fontFamily: "'Libre Baskerville', serif", // Classic, elegant font
+          fontFamily: "'Merriweather', serif",
           color: "black",
           marginTop: "3%",
           textAlign: "center",
-          fontSize: "3rem", // Optional: larger heading
+          fontSize: "3rem",
         }}
       >
         About Us
@@ -61,25 +61,25 @@ export const Footer = () => {
         }}
       >
         <div
-          style={{
-            height: "100%",
-            width: "60%",
-            borderRight: "2px solid black",
+        // style={{
+        //   height: "100%",
+        //   width: "50%",
+        //   borderRight: "2px solid black",
 
-            color: "black",
-            textAlign: "left",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-          }}
+        //   color: "black",
+        //   textAlign: "left",
+        //   display: "flex",
+        //   flexDirection: "column",
+        //   alignItems: "center",
+        //   position: "relative",
+        // }}
         >
         </div>
 
         <div
           style={{
             height: "100%",
-            width: "100%",
+            width: "80%",
             borderRight: "2px solid black",
           }}
         >
@@ -95,11 +95,11 @@ export const Footer = () => {
             }}
           >
             <div
-              style={{
-                height: "100%",
-                width: "100%",
-                borderRight: "2px solid black",
-              }}
+            // style={{
+            //   height: "100%",
+            //   width: "100%",
+            //   borderRight: "2px solid black",
+            // }}
             >
 
             </div>
@@ -107,7 +107,7 @@ export const Footer = () => {
               style={{
                 height: "100%",
                 width: "100%",
-                borderRight: "2px solid black",
+                // borderRight: "2px solid black",
               }}
             >
               <h3 className="footer-subtitle">GitHub</h3>
@@ -156,7 +156,7 @@ export const Footer = () => {
         <div
           style={{
             height: "100%",
-            width: "90%",
+            width: "80%",
             borderRight: "2px solid black",
           }}
         >
@@ -164,33 +164,40 @@ export const Footer = () => {
           <div
             style={{
               display: "flex",
-              alignItems: "center",
+              alignItems: "flex-start",
               position: "relative",
               height: "80%",
               width: "100%",
               marginTop: "10%",
+              gap: "10%",
             }}
           >
             <div
               style={{
-                height: "100%",
-                width: "100%",
-                // borderRight: "2px solid black",
+                width: "50%",
                 marginLeft: "10px",
                 textAlign: "left",
               }}
             >
               <h3 className="footer-subtitle">E-mail</h3>
-              <h4 className="footer-subtitle-content">v.stars@gmail.com</h4>
-              <h3
-                className="footer-subtitle"
-                style={{
-                  marginTop: "40px",
-                }}
-              >
-                Phone
-              </h3>
-              <h4 className="footer-subtitle-content">95124XXXX</h4>
+              <h4 className="footer-subtitle-content">bsrakshin@gmail.com</h4>
+              <h4 className="footer-subtitle-content">kaushalsiripuram@gmail.com</h4>
+              <h4 className="footer-subtitle-content">jashwanthmareddy@gmail.com</h4>
+              <h4 className="footer-subtitle-content">mbhanuchandra003@gmail.com</h4>
+            </div>
+
+            {/* Phone Section */}
+            <div
+              style={{
+                width: "60%",
+                textAlign: "center",
+              }}
+            >
+              <h3 className="footer-subtitle" >Phone</h3>
+              <h4 className="footer-subtitle-content">+91 8341606749</h4>
+              <h4 className="footer-subtitle-content">+91 9063304286</h4>
+              <h4 className="footer-subtitle-content">+91 9347310160</h4>
+              <h4 className="footer-subtitle-content">+91 8374108107</h4>
             </div>
             {/* <div
               style={{
@@ -224,3 +231,4 @@ export const Footer = () => {
     </footer>
   );
 };
+ 
