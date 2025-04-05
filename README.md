@@ -21,4 +21,4 @@ npm intall
 ```terminal
 npm run start
 ```
-<p>Similar for backend</p>
+<p>Similar for back</p>
