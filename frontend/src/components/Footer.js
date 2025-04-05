@@ -106,7 +106,7 @@ export const Footer = () => {
             <div
               style={{
                 height: "100%",
-                width: "100%",
+                width: "90%",
                 // borderRight: "2px solid black",
               }}
             >
@@ -156,7 +156,7 @@ export const Footer = () => {
         <div
           style={{
             height: "100%",
-            width: "80%",
+            width: "100%",
             borderRight: "2px solid black",
           }}
         >
