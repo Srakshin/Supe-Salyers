@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import IndiaMap from "./pages/IndiaMap";
-// import Chat from "./pages/Chat";
 import FloatingChat from "./components/FloatingChat";
 
 
@@ -35,15 +34,9 @@ const App = () => {
       {/* <Route path="/trade" element={<Ecommerce />} /> */}
       <Route path="/trade" element={<TradePage />} />
       <Route path="/trade/more" element={<TradePage2 />} />
-
-      {/* <Route path="/culture" element={<CulturePage />} /> */}
-
-      <Route path="/addData" element={<AddDataComponent />} />
-      {/* <Route path="/navb" element={<NavB />} /> */}
-
+      {/* <Route path="/addData" element={<AddDataComponent />} /> */}
       <Route path={"/state/:stateName"} element={<StatePage />} />
-      {/* Mapping states for code clarity */}
-      {/* <Route path="/chat" element={<Chat />} /> */}
+      
     </Routes>
   );
 };

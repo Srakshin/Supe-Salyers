@@ -34,6 +34,10 @@
     text-align: left;
     
 }
+.footer-subtitle svg {
+    margin-right: 8px;
+  }
+  
 
 .footer-subtitle-content {
     font-size: 1rem;
@@ -52,6 +56,8 @@
     white-space: nowrap;
     overflow: hidden; 
 }
+
+
 
 .content a {
     color: #2b2b2b;
