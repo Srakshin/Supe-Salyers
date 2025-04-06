@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import IndiaMap from "./pages/IndiaMap";
+import Chat from "./pages/Chat";
 
 // STATES
 
@@ -40,6 +41,7 @@ const App = () => {
 
       <Route path={"/state/:stateName"} element={<StatePage />} />
       {/* Mapping states for code clarity */}
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   );
 };

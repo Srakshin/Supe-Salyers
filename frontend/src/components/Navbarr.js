@@ -5,6 +5,7 @@ import { BiSolidUpArrowAlt } from "react-icons/bi"
 import { RiMapPin2Line } from "react-icons/ri";
 import { TbTempleHindu } from "react-icons/tb"
 import { GiIndiaGate } from "react-icons/gi"
+import { PiChatsCircleThin } from "react-icons/pi";
 function Navbarjs() {
   return (
     <nav class="menu" id="menu">
@@ -23,7 +24,7 @@ function Navbarjs() {
         <a href="/trade"><MdStorefront /></a>
         </li>
         <li class="menu-item">
-          <a class="flex items-center" href="/india">  </a>
+          <a href="/chat"><PiChatsCircleThin /></a> {/* ✅ Chat icon */}
         </li>
         <li class="menu-item">
           <a class="" href="#top-section"><BiSolidUpArrowAlt /></a>

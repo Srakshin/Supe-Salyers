@@ -112,7 +112,7 @@
 
 .menu-item:nth-child(3) a {
     transform: rotate(-162deg);
-    opacity: 0;
+    /* opacity: 0; */
 }
 
 .menu-item:nth-child(4) a {
