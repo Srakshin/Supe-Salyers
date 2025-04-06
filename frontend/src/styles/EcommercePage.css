@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Palette+Mosaic:400|Inknut+Antiqua:400|Purple+Purse:400|Inter:400|Kelly+Slab:400|Josefin+Slab:400");
 
 .index {
-  background-color: #ffb3c6;
+  background: radial-gradient(circle, #ffe5b4, #f8f2bc, #f8e2b8);
   /* display: flex; */
   flex-direction: column;
   justify-content: center;

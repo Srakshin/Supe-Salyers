@@ -31,7 +31,7 @@ export const EcommercePage2Card = ({ title, images, popularity }) => {
         </div>
       </div>
       <p className="eco-page2-popularity">
-        <i class="fa fa-heart" style={{ color: "#ff0000" }}></i> {popularity}
+        <i class="ri-heart-fill" style={{ color: "#008080" }}></i> {popularity}
       </p>
     </div>
   );

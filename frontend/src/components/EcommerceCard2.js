@@ -51,7 +51,7 @@ export const EcommerceCard2 = ({ ImgSrc, imgIndex, title, desc }) => {
 
       <img className="eco-card-image2" alt="Rectangle" src={mainCard} />
       <div className="eco-card-desc2">
-          Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum 
+          Lorem Ipsum 
       </div>
     </div>
   );

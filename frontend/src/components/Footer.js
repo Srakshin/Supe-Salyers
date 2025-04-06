@@ -10,7 +10,7 @@ export const Footer = () => {
     },
     {
       id: "2",
-      name: "Bhanu Chandra",
+      name: "Megharaj Bhanu Chandra",
       LI: "https://www.linkedin.com/in/bhanu-chandra-1b6929269/",
       GH: "#",
     },
