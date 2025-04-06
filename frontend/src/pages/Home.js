@@ -27,9 +27,10 @@ import rathBG from "../assets/HomePage/rathBG.png";
 import rathFG from "../assets/HomePage/rathFG.png";
 // Create an array with all the imported images above
 
+
 import flybird from "../assets/HomePage/flybird.gif";
 import birdy from "../assets/HomePage/birdy.gif";
-
+// import Floatingchat from "../components/FloatingChat";
 import Navbarjs from "../components/Navbarr";
 import { Footer } from "../components/Footer";
 import { LoadingPage } from "./LoadingPage";
@@ -345,6 +346,7 @@ const Home = () => {
             }}
           //  id="heading-h2"
           >
+            
             The Indian Legacy
           </h2>
         </div>
