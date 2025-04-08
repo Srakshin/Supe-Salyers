@@ -6,10 +6,10 @@ import "../styles/IndiaMap.css";
 
 const IndiaMap = () => {
   const [jsonData, setJsonData] = useState({});
-  const currentStates = ["Rajasthan", "Tamil Nadu", "Uttar Pradesh"];
+  const currentStates = ["Rajasthan", "Tamil Nadu", "Uttar Pradesh","Telangana","Andhra Pradesh"];
   const mapRef = useRef(null); // Create a ref for the map
 
-  useEffect(() => {
+  useEffect(() => {  
     // Set jsonData when the component mounts
     const jsonData = data;
     setJsonData(jsonData);
@@ -53,7 +53,7 @@ const IndiaMap = () => {
         style={{ height: "100vh", width: "100vw" }}
         scrollWheelZoom={false}
       >
-        <GeoJSON
+        {/* <GeoJSON
           data={data}
           onEachFeature={(feature, layer) => {
             const stateName = feature.properties.ST_NM;
@@ -95,22 +95,81 @@ const IndiaMap = () => {
               layer.setStyle(defaultStyle);
             });
           }}
-        />
+        /> */}
+        <GeoJSON
+  data={data}
+  onEachFeature={(feature, layer) => {
+    const stateName = feature.properties.ST_NM;
+
+    // Define custom styles for the default and hovered states
+    const defaultStyle = {
+      fillColor: currentStates.includes(stateName) ? "green" : "red",
+      color: "white",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.7,
+    };
+
+    const hoverStyle = {
+      color: "white",
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.9,
+    };
+
+    layer.setStyle(defaultStyle);
+
+    layer.on("click", () => {
+      const bounds = layer.getBounds();
+      handleStateClick(feature, bounds);
+    });
+
+    layer.bindTooltip(stateName, {
+      permanent: false,
+      direction: "center",
+      opacity: 0.7,
+    });
+
+    layer.on("mouseover", () => {
+      layer.setStyle(hoverStyle);
+      // Set custom cursor image when hovering over the feature
+      layer._map.getContainer().style.cursor = 'url(path/to/your/custom-cursor.png), auto';
+    });
+
+    layer.on("mouseout", () => {
+      layer.setStyle(defaultStyle);
+      // Reset the cursor to default
+      layer._map.getContainer().style.cursor = ''; // Reset to default cursor
+    });
+  }}
+/>
+
       </MapContainer>
-      <div
+       <div
+        // style={{
+        //   position: "absolute",
+        //   width: "210px",
+        //   height: "fit-content",
+        //   top: "20px",
+        //   right: "20px",
+        //   background: "#bbcce4",
+        //   padding: "5px 15px",
+        //   paddingTop: "-10px",
+        //   borderRadius: "25px",
+        //   // opacity: "0.5",
+        // }}
         style={{
           position: "absolute",
           width: "210px",
           height: "fit-content",
           top: "20px",
           right: "20px",
-          background: "#bbcce4",
+          background: "#ADD8E6",
           padding: "5px 15px",
-          paddingTop: "-10px",
           borderRadius: "25px",
-          // opacity: "0.5",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow effect
         }}
-      >
+      > 
         <h4
           style={{
             paddingBottom: "5px",
@@ -123,10 +182,12 @@ const IndiaMap = () => {
         <p>Rajasthan</p>
         <p>Uttar Pradesh</p>
         <p>Tamil Nadu</p>
-        
+        <p>Telangana</p>
+        <p>Andhra Pradesh</p>
       </div>
     </div>
   );
 };
 
 export default IndiaMap;
+
