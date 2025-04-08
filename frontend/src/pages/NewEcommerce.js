@@ -18,10 +18,11 @@ import Hottest from "../assets/ecom/Hottest.png";
 import SoDidYouLike from "../assets/ecom/SoWhatDidYouLikeBG.png";
 import { Footer } from "../components/Footer";
 import EcoNavbar from "../components/Navbar";
-
+import Navbarjs from "../components/Navbarr";
 export const TradePage = () => {
   return (
     <div className="index">
+      <Navbarjs />
     <EcoNavbar />
       <div class="Categories-Intro">
         <img

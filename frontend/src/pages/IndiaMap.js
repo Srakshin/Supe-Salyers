@@ -3,6 +3,8 @@ import { MapContainer, Polygon, GeoJSON, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import data from "../IndianData/UpdateIndiaGeo.json";
 import "../styles/IndiaMap.css";
+import Navbarjs from "../components/Navbarr";
+
 
 const IndiaMap = () => {
   const [jsonData, setJsonData] = useState({});
@@ -46,6 +48,7 @@ const IndiaMap = () => {
 
   return (
     <div>
+      <Navbarjs />
       <MapContainer
         ref={mapRef}
         center={[22.5, 80]}
