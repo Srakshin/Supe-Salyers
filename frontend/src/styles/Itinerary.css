@@ -2,7 +2,12 @@
 
 .heritage-container {
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #fceabb, #f8b500, #e65100);
+  background: linear-gradient(
+  to bottom right,
+  #ff9933 0%,
+  #fffdf6 50%,
+  #138808 100%
+);
   font-family: 'Georgia', serif;
   padding: 4rem 2rem;
   display: flex;

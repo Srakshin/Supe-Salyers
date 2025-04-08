@@ -61,11 +61,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# ✅ Configure Gemini API
-genai.configure(api_key="AIzaSyDydWxM_3IoML4ZPSe-YAlBQOZvXGCz8PI")  # Replace with your key
+
+genai.configure(api_key="AIzaSyDydWxM_3IoML4ZPSe-YAlBQOZvXGCz8PI")  
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-# ✅ CHATBOT SETUP
 chat = model.start_chat(history=[
     {
         "role": "user",
@@ -96,7 +95,7 @@ def chatbot():
         print("Error:", e)
         return jsonify({"reply": "Sorry, something went wrong."})
 
-# ✅ ITINERARY GENERATOR ENDPOINT
+
 @app.route("/generate-itinerary", methods=["POST"])
 def generate_itinerary():
     data = request.json
@@ -117,7 +116,7 @@ def generate_itinerary():
     except Exception as e:
         return jsonify({"itinerary": f"⚠️ Error generating itinerary: {str(e)}"})
 
-# ✅ PDF DOWNLOAD ENDPOINT
+
 @app.route("/download-pdf", methods=["POST"])
 def download_pdf():
     data = request.json
@@ -125,15 +124,18 @@ def download_pdf():
     
     pdf = FPDF()
     pdf.add_page()
-    pdf.set_font("Arial", size=12)
+
+    # Add and use the DejaVu font
+    pdf.add_font('DejaVu', '', 'fonts/DejaVuSans.ttf', uni=True)  # Make sure path is correct
+    pdf.set_font("DejaVu", size=12)
+
     pdf.multi_cell(0, 10, itinerary)
-    
+
     pdf_stream = BytesIO()
     pdf.output(pdf_stream)
     pdf_stream.seek(0)
 
     return send_file(pdf_stream, as_attachment=True, download_name="Travel_Itinerary.pdf", mimetype="application/pdf")
 
-# ✅ Run the unified server
 if __name__ == "__main__":
     app.run(debug=True)

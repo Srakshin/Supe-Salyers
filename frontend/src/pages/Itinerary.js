@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Itinerary.css";
+import Navbarjs from "../components/Navbarr";
 
 const ItineraryPage = () => {
   const [location, setLocation] = useState("");
@@ -38,8 +39,36 @@ const ItineraryPage = () => {
     setLoading(false);
   };
 
+  const handleDownloadPDF = async () => {
+    if (!itinerary) return;
+
+    try {
+      const response = await fetch("http://localhost:5000/download-pdf", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ itinerary }),
+      });
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Travel_Itinerary.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading PDF:", error);
+    }
+  };
+
+
   return (
     <div className="heritage-container">
+      <Navbarjs />
       <div className="heritage-card">
         <h1 className="heritage-title">🕌 Bharat Darshan Yatra Planner</h1>
         <p className="heritage-subtitle">
@@ -83,8 +112,12 @@ const ItineraryPage = () => {
           <div className="result-box">
             <h2 className="result-title">✅ Here is your itinerary:</h2>
             <pre>{itinerary}</pre>
+            <button className="generate-button" onClick={handleDownloadPDF}>
+              📄 Download as PDF
+            </button>
           </div>
         )}
+
       </div>
     </div>
   );
