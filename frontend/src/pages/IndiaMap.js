@@ -5,6 +5,7 @@ import data from "../IndianData/UpdateIndiaGeo.json";
 import "../styles/IndiaMap.css";
 import Navbarjs from "../components/Navbarr";
 
+
 const IndiaMap = () => {
   const [jsonData, setJsonData] = useState({});
   const currentStates = ["Rajasthan", "Tamil Nadu", "Uttar Pradesh"];

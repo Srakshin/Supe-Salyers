@@ -3,10 +3,12 @@ import "../styles/ecommerce.css";
 import { FrameCard } from "../components/FrameCard";
 import NavB from "../components/NavB";
 import Navbarjs from "../components/Navbarr";
+
 export const Ecommerce = () => {
   return (
     <div className="desktop">
       <Navbarjs />
+    
       <div className="div">
         <NavB />
         <div className="div-wrapper">

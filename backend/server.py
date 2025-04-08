@@ -1,14 +1,71 @@
-from flask import Flask, request, jsonify
+# from flask import Flask, request, jsonify
+# import google.generativeai as genai
+# from flask_cors import CORS
+
+# app = Flask(__name__)
+# CORS(app) 
+
+# genai.configure(api_key="AIzaSyDydWxM_3IoML4ZPSe-YAlBQOZvXGCz8PI")
+# model = genai.GenerativeModel("gemini-1.5-flash")
+
+# # Start chat session with a limited scope
+# chat = model.start_chat(history=[
+#     {
+#         "role": "user",
+#         "parts": [
+#             "You are a chatbot for a website focused on Indian heritage and culture. "
+#             "Only answer questions related to India’s traditions, history, architecture, festivals, art, and this website. "
+#             "If the user asks anything outside this scope, say: 'I’m here to help with Indian heritage and this website. I can’t answer that.'"
+#         ]
+#     }
+# ])
+
+# # Track greeting status
+# has_greeted = False
+
+# @app.route("/api/chat", methods=["POST"])
+# def chatbot():
+#     global has_greeted
+#     user_input = request.json.get("message")
+
+#     # Greet only once
+#     if not has_greeted:
+#         has_greeted = True
+#         return jsonify({
+#             "reply": "Hey! Do you have any questions about India’s heritage, culture, or our website?"
+#         })
+
+#     # Process actual chat input
+#     try:
+#         response = chat.send_message(user_input)
+#         return jsonify({"reply": response.text})
+#     except Exception as e:
+#         print("Error:", e)
+#         return jsonify({"reply": "Sorry, something went wrong."})
+# # chat = model.start_chat()
+
+# # @app.route("/api/chat", methods=["POST"])
+# # def chatbot():
+# #     user_input = request.json.get("message")
+# #     response = chat.send_message(user_input)
+# #     return jsonify({"reply": response.text})
+
+# if __name__ == "__main__":
+#     app.run(debug=True)
+from flask import Flask, request, jsonify, send_file
+from fpdf import FPDF
+from io import BytesIO
 import google.generativeai as genai
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 
-genai.configure(api_key="AIzaSyDydWxM_3IoML4ZPSe-YAlBQOZvXGCz8PI")
+# ✅ Configure Gemini API
+genai.configure(api_key="AIzaSyDydWxM_3IoML4ZPSe-YAlBQOZvXGCz8PI")  # Replace with your key
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-# Start chat session with a limited scope
+# ✅ CHATBOT SETUP
 chat = model.start_chat(history=[
     {
         "role": "user",
@@ -19,8 +76,6 @@ chat = model.start_chat(history=[
         ]
     }
 ])
-
-# Track greeting status
 has_greeted = False
 
 @app.route("/api/chat", methods=["POST"])
@@ -28,27 +83,57 @@ def chatbot():
     global has_greeted
     user_input = request.json.get("message")
 
-    # Greet only once
     if not has_greeted:
         has_greeted = True
         return jsonify({
             "reply": "Hey! Do you have any questions about India’s heritage, culture, or our website?"
         })
 
-    # Process actual chat input
     try:
         response = chat.send_message(user_input)
         return jsonify({"reply": response.text})
     except Exception as e:
         print("Error:", e)
         return jsonify({"reply": "Sorry, something went wrong."})
-# chat = model.start_chat()
 
-# @app.route("/api/chat", methods=["POST"])
-# def chatbot():
-#     user_input = request.json.get("message")
-#     response = chat.send_message(user_input)
-#     return jsonify({"reply": response.text})
+# ✅ ITINERARY GENERATOR ENDPOINT
+@app.route("/generate-itinerary", methods=["POST"])
+def generate_itinerary():
+    data = request.json
+    location = data.get("location")
+    days = data.get("days")
+    month = data.get("month")
 
+    prompt = f"""
+    Generate a {days}-day travel itinerary for {location} in {month}.
+    Include specific timings for morning, afternoon, and evening activities, with food suggestions.
+    Cover both popular and offbeat spots. Avoid pricing information.
+    Format it as bullet points and easy-to-read sections.
+    """
+
+    try:
+        response = model.generate_content(prompt)
+        return jsonify({"itinerary": response.text})
+    except Exception as e:
+        return jsonify({"itinerary": f"⚠️ Error generating itinerary: {str(e)}"})
+
+# ✅ PDF DOWNLOAD ENDPOINT
+@app.route("/download-pdf", methods=["POST"])
+def download_pdf():
+    data = request.json
+    itinerary = data.get("itinerary", "No itinerary content.")
+    
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    pdf.multi_cell(0, 10, itinerary)
+    
+    pdf_stream = BytesIO()
+    pdf.output(pdf_stream)
+    pdf_stream.seek(0)
+
+    return send_file(pdf_stream, as_attachment=True, download_name="Travel_Itinerary.pdf", mimetype="application/pdf")
+
+# ✅ Run the unified server
 if __name__ == "__main__":
     app.run(debug=True)

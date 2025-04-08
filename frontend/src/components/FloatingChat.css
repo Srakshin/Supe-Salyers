@@ -246,11 +246,11 @@
 
 /* .suggestions {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   flex-wrap: wrap;
-  margin: 8px;
-  padding: 8px;
-  justify-content: center;
+  margin: 1px;
+  padding:1px;
+  justify-content: left;
 }
 
 .suggestions span {

@@ -1,13 +1,15 @@
 import "./styles.css";
 import { MdStorefront } from "react-icons/md";
-import { BiSolidUpArrowAlt } from "react-icons/bi";
+// import { BiSolidUpArrowAlt } from "react-icons/bi";
 import { RiMapPin2Line } from "react-icons/ri";
 import { PiChatsCircleThin } from "react-icons/pi";
 import { useState } from "react";
 import FloatingChat from "./FloatingChat";
-import { PiUsersThreeLight } from "react-icons/pi";
+// import { PiUsersThreeLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
+import { PiMapTrifoldLight } from "react-icons/pi";
+
 function Navbarjs() {
   const [showChat, setShowChat] = useState(false);
 
@@ -38,8 +40,9 @@ function Navbarjs() {
           </li>
           {/* 4th icon*/}
           <li className="menu-item">
-            <a href="#my-footer"><PiUsersThreeLight /></a>
+            <a href="/itinerary"><PiMapTrifoldLight /></a>
           </li>
+
           {/* 3rd icon*/}
           <li className="menu-item">
             <a href="/trade"><MdStorefront /></a>
