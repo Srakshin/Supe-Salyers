@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import IndiaMap from "./pages/IndiaMap";
+import Translator from "./pages/Translator";
 // import FloatingChat from "./components/FloatingChat";
-
+import StreetView from "./pages/StreetView"; 
 
 // STATES
 
@@ -39,6 +40,9 @@ const App = () => {
       {/* <Route path="/addData" element={<AddDataComponent />} /> */}
       <Route path={"/state/:stateName"} element={<StatePage />} />
       <Route path="/itinerary" element={<Itinerary />} /> 
+      {/* text to speech */}
+      <Route path="/translate" element={<Translator/>} />
+      <Route path="/streetview" element={<StreetView />} />
     </Routes>
   );
 };

@@ -1,7 +1,7 @@
 import "./styles.css";
-import { MdStorefront } from "react-icons/md";
+import { GiStreetLight } from "react-icons/gi"
 // import { BiSolidUpArrowAlt } from "react-icons/bi";
-import { RiMapPin2Line } from "react-icons/ri";
+import { MdTranslate } from "react-icons/md";
 import { PiChatsCircleThin } from "react-icons/pi";
 import { useState } from "react";
 import FloatingChat from "./FloatingChat";
@@ -36,7 +36,7 @@ function Navbarjs() {
           </li>
           {/* 5th icon*/}
           <li className="menu-item">
-            <a href="/india"><RiMapPin2Line /></a>
+            <a href="/translate"><MdTranslate/></a>
           </li>
           {/* 4th icon*/}
           <li className="menu-item">
@@ -45,7 +45,7 @@ function Navbarjs() {
 
           {/* 3rd icon*/}
           <li className="menu-item">
-            <a href="/trade"><MdStorefront /></a>
+            <a href="/streetview"><GiStreetLight /></a>
           </li>
         </ul>
       </nav>
