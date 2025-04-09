@@ -101,9 +101,6 @@ export const Footer = () => {
               <li><a href="#">Privacy Policy</a></li>
               <li><a href="#">Terms of Use</a></li>
             </ul>
-            <div className="copyright-text">
-              <p>© 2023 Indian Heritage. All rights reserved.</p>
-            </div>
           </div>
         </div>
         

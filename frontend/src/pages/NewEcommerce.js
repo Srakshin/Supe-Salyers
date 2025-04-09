@@ -22,6 +22,9 @@ import TraditionalBoysGallery from "../components/TraditionalBoysGallery";
 export const TradePage = () => {
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+  const [cartWindow, setCartWindow] = useState(null);
 
   const initialProducts = [
     {
@@ -83,6 +86,218 @@ export const TradePage = () => {
     });
   };
 
+  const toggleCart = (product) => {
+    setCartItems(prevCartItems => {
+      const isInCart = prevCartItems.some(item => item.id === product.id);
+      if (isInCart) {
+        return prevCartItems.filter(item => item.id !== product.id);
+      } else {
+        return [...prevCartItems, product];
+      }
+    });
+  };
+
+  const openCartWindow = () => {
+    if (cartWindow && !cartWindow.closed) {
+      cartWindow.focus();
+      return;
+    }
+
+    const width = 600;
+    const height = 600;
+    const left = (window.screen.width - width) / 2;
+    const top = (window.screen.height - height) / 2;
+
+    const newWindow = window.open('', 'cartWindow', 
+      `width=${width},height=${height},left=${left},top=${top},toolbar=no,menubar=no,scrollbars=yes,resizable=yes`
+    );
+
+    if (newWindow) {
+      newWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Shopping Cart</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+              .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
+              .cart-title { font-size: 28px; color: #333; margin: 0; }
+              .close-btn { background: none; border: none; font-size: 28px; cursor: pointer; color: #666; }
+              .cart-items { max-height: 400px; overflow-y: auto; }
+              .cart-item { display: flex; align-items: center; padding: 20px; background: white; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+              .item-image { width: 100px; height: 100px; object-fit: cover; border-radius: 4px; margin-right: 20px; }
+              .item-details { flex: 1; }
+              .item-name { font-size: 18px; margin: 0 0 8px 0; color: #333; }
+              .item-price { color: #4CAF50; font-weight: bold; font-size: 16px; margin: 0; }
+              .remove-btn { background: none; border: none; color: #ff4444; cursor: pointer; font-size: 24px; padding: 5px; }
+              .cart-footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; }
+              .total { display: flex; justify-content: space-between; font-size: 20px; margin-bottom: 20px; }
+              .checkout-btn { width: 100%; padding: 15px; background: #4CAF50; color: white; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; transition: background 0.3s; }
+              .checkout-btn:hover { background: #45a049; }
+              .empty-cart { text-align: center; padding: 40px; color: #666; font-size: 18px; }
+              .order-form { display: none; padding: 20px; background: white; border-radius: 8px; margin-top: 20px; }
+              .form-group { margin-bottom: 15px; }
+              .form-group label { display: block; margin-bottom: 5px; color: #333; }
+              .form-group input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+              .order-success { display: none; text-align: center; padding: 20px; background: #E8F5E9; border-radius: 8px; margin-top: 20px; }
+              .order-success h2 { color: #2E7D32; margin-bottom: 10px; }
+              .order-success p { color: #1B5E20; margin-bottom: 15px; }
+              .track-order-btn { background: #2E7D32; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+              .track-order-btn:hover { background: #1B5E20; }
+              .order-steps { display: flex; justify-content: space-between; margin-top: 20px; position: relative; }
+              .step { text-align: center; position: relative; z-index: 1; }
+              .step-icon { width: 40px; height: 40px; background: #E8F5E9; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+              .step.active .step-icon { background: #4CAF50; color: white; }
+              .step-line { position: absolute; top: 20px; left: 0; right: 0; height: 2px; background: #E8F5E9; z-index: 0; }
+              .step-line-progress { position: absolute; top: 0; left: 0; height: 100%; background: #4CAF50; transition: width 0.3s ease; }
+            </style>
+          </head>
+          <body>
+            <div class="cart-header">
+              <h1 class="cart-title">Shopping Cart</h1>
+              <button class="close-btn" onclick="window.close()">×</button>
+            </div>
+            <div id="cartContent">
+              <div class="cart-items">
+                ${cartItems.length === 0 ? 
+                  '<div class="empty-cart">Your cart is empty</div>' : 
+                  cartItems.map(item => `
+                    <div class="cart-item">
+                      <img src="${item.image}" alt="${item.name}" class="item-image">
+                      <div class="item-details">
+                        <h3 class="item-name">${item.name}</h3>
+                        <p class="item-price">₹${item.price}</p>
+                      </div>
+                      <button class="remove-btn" onclick="window.opener.removeFromCart(${item.id})">×</button>
+                    </div>
+                  `).join('')
+                }
+              </div>
+              ${cartItems.length > 0 ? `
+                <div class="cart-footer">
+                  <div class="total">
+                    <span>Total:</span>
+                    <span>₹${cartItems.reduce((sum, item) => sum + item.price, 0)}</span>
+                  </div>
+                  <button class="checkout-btn" onclick="showOrderForm()">Proceed to Checkout</button>
+                </div>
+              ` : ''}
+            </div>
+
+            <div id="orderForm" class="order-form">
+              <h2>Shipping Details</h2>
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="fullName" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" required>
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" id="phone" required>
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" id="address" required>
+              </div>
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" id="city" required>
+              </div>
+              <div class="form-group">
+                <label>PIN Code</label>
+                <input type="text" id="pincode" required>
+              </div>
+              <button class="checkout-btn" onclick="placeOrder()">Place Order</button>
+            </div>
+
+            <div id="orderSuccess" class="order-success">
+              <h2>Order Placed Successfully! 🎉</h2>
+              <p>Order ID: <span id="orderId"></span></p>
+              <p>Thank you for shopping with us!</p>
+              <div class="order-steps">
+                <div class="step-line">
+                  <div class="step-line-progress" id="progressLine"></div>
+                </div>
+                <div class="step active">
+                  <div class="step-icon">✓</div>
+                  <div>Order Placed</div>
+                </div>
+                <div class="step">
+                  <div class="step-icon">📦</div>
+                  <div>Processing</div>
+                </div>
+                <div class="step">
+                  <div class="step-icon">🚚</div>
+                  <div>Shipping</div>
+                </div>
+                <div class="step">
+                  <div class="step-icon">🏠</div>
+                  <div>Delivered</div>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              function showOrderForm() {
+                document.getElementById('cartContent').style.display = 'none';
+                document.getElementById('orderForm').style.display = 'block';
+              }
+
+              function generateOrderId() {
+                return 'ORD' + Date.now().toString().slice(-8);
+              }
+
+              function placeOrder() {
+                const orderId = generateOrderId();
+                document.getElementById('orderId').textContent = orderId;
+                document.getElementById('orderForm').style.display = 'none';
+                document.getElementById('orderSuccess').style.display = 'block';
+                
+                // Simulate order progress
+                let progress = 0;
+                const steps = document.querySelectorAll('.step');
+                const progressLine = document.getElementById('progressLine');
+                
+                function updateProgress() {
+                  progress += 1;
+                  if (progress <= steps.length) {
+                    progressLine.style.width = ((progress - 1) / (steps.length - 1) * 100) + '%';
+                    steps.forEach((step, index) => {
+                      if (index < progress) {
+                        step.classList.add('active');
+                      }
+                    });
+                  }
+                }
+
+                // Update progress every 2 seconds
+                const progressInterval = setInterval(() => {
+                  updateProgress();
+                  if (progress >= steps.length) {
+                    clearInterval(progressInterval);
+                  }
+                }, 2000);
+              }
+
+              window.removeFromCart = function(id) {
+                window.opener.removeFromCart(id);
+                window.location.reload();
+              };
+            </script>
+          </body>
+        </html>
+      `);
+      setCartWindow(newWindow);
+    }
+  };
+
+  const removeFromCart = (productId) => {
+    setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+  };
+
   return (
     <div className="index">
       <Navbarjs />
@@ -130,33 +345,210 @@ export const TradePage = () => {
           minHeight: "150vh",
           width: "100%",
           position: "relative",
-          background: "linear-gradient(135deg, rgba(245, 240, 230, 0.1), rgba(250, 240, 220, 0.2))"
+          padding: "40px 20px",
+          background: "linear-gradient(to right, #ffe5d9, #ffd6b3)",
+          boxShadow: "inset 0 0 50px rgba(255, 214, 179, 0.3)"
         }}
       >
-        <img
-          src={Hottest}
+        <div
           style={{
-            width: "98%",
-            height: "95%",
             position: "absolute",
-            top: 0,
-            left: "1%",
-            zIndex: 1,
-            opacity: 0.7,
-            mixBlendMode: "multiply"
+            top: "20px",
+            left: "40px",
+            textAlign: "center"
           }}
-          alt="Hottest section background"
-        />
-        
-        <div style={{
+        >
+          <div
+            style={{
+              fontFamily: "Inknut Antiqua, serif",
+              fontSize: "48px",
+              background: "linear-gradient(45deg, #D32F2F, #FF5252)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+              textShadow: "2px 2px 8px rgba(211, 47, 47, 0.2)",
+              animation: "fadeInScale 1.2s ease-out",
+              marginBottom: "5px"
+            }}
+          >
+            Trade
+          </div>
+          <div
+          style={{
+              width: "100%",
+              height: "2px",
+              background: "linear-gradient(to right, #D32F2F, transparent)",
+              margin: "0 auto",
+              position: "relative",
+              animation: "fadeInScale 1.2s ease-out"
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "-1px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "50%",
+                height: "4px",
+                background: "linear-gradient(to right, transparent, #FF5252, transparent)",
+                filter: "blur(1px)"
+              }}
+            ></div>
+          </div>
+        </div>
+
+        <style>
+          {`
+            @keyframes fadeInScale {
+              0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(-20px);
+              }
+              100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+              }
+            }
+          `}
+        </style>
+
+        <div className="hottest-header">
+          <p style={{ color: "#333" }}>Our most popular items this season, handpicked just for you</p>
+          <div className="hottest-filters">
+            <button className="filter-btn active">All</button>
+            <button className="filter-btn">Trending</button>
+            <button className="filter-btn">New Arrivals</button>
+            <button className="filter-btn">Best Sellers</button>
+        </div>
+      </div>
+
+        {/* Cart Icon */}
+        <div className="cart-bar" style={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: "linear-gradient(135deg, rgba(245, 240, 230, 0.2), rgba(250, 240, 220, 0.3))",
-          zIndex: 2
-        }}></div>
+          top: "80px",
+          right: "120px",
+          zIndex: "100",
+          width: "60px",
+          background: "rgba(255, 255, 255, 0.95)",
+          borderRadius: "30px",
+          boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: "10px 0"
+        }}>
+          <button 
+            onClick={openCartWindow}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "24px",
+              color: "#4CAF50",
+              position: "relative",
+              width: "40px",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            🛒
+            {cartItems.length > 0 && (
+              <span style={{
+                position: "absolute",
+                top: "-5px",
+                right: "-5px",
+                background: "#4CAF50",
+                color: "white",
+                borderRadius: "50%",
+                width: "20px",
+                height: "20px",
+                fontSize: "12px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}>
+                {cartItems.length}
+              </span>
+            )}
+          </button>
+          
+          {showCart && cartItems.length > 0 && (
+            <div style={{
+              position: "absolute",
+              top: "60px",
+              right: "0",
+              background: "white",
+              boxShadow: "0 3px 10px rgba(0,0,0,0.2)",
+              borderRadius: "10px",
+              width: "300px",
+              maxHeight: "500px",
+              overflowY: "auto",
+              padding: "15px"
+            }}>
+              <div style={{
+                borderBottom: "1px solid #eee",
+                paddingBottom: "10px",
+                marginBottom: "10px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}>
+                <h3 style={{ margin: 0 }}>Cart Items</h3>
+                <button 
+                  onClick={() => setShowCart(false)}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    fontSize: "18px",
+                    color: "#666"
+                  }}
+                >
+                  ✕
+                </button>
+              </div>
+              {cartItems.map(product => (
+                <div key={product.id} style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "10px",
+                  borderBottom: "1px solid #eee",
+                  gap: "10px"
+                }}>
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    style={{ 
+                      width: "60px", 
+                      height: "60px", 
+                      objectFit: "cover",
+                      borderRadius: "5px"
+                    }} 
+                  />
+                  <div style={{ flex: 1 }}>
+                    <h4 style={{ margin: "0 0 5px 0" }}>{product.name}</h4>
+                    <p style={{ margin: 0, color: "#4CAF50" }}>₹{product.price}</p>
+                  </div>
+                  <button
+                    onClick={() => toggleCart(product)}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      color: "#4CAF50",
+                      fontSize: "18px"
+                    }}
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Favorites Bar */}
         <div className="favorites-bar" style={{
@@ -175,7 +567,7 @@ export const TradePage = () => {
         }}>
           <button 
             onClick={() => setShowFavorites(!showFavorites)}
-            style={{
+          style={{
               background: "none",
               border: "none",
               cursor: "pointer",
@@ -212,7 +604,7 @@ export const TradePage = () => {
           
           {showFavorites && favorites.length > 0 && (
             <div style={{
-              position: "absolute",
+            position: "absolute",
               top: "60px",
               right: "0",
               background: "white",
@@ -285,20 +677,6 @@ export const TradePage = () => {
           )}
         </div>
 
-        <div className="hottest-header">
-          <pre>
-
-
-          </pre>
-          <p>Our most popular items this season, handpicked just for you</p>
-          <div className="hottest-filters">
-            <button className="filter-btn active">All</button>
-            <button className="filter-btn">Trending</button>
-            <button className="filter-btn">New Arrivals</button>
-            <button className="filter-btn">Best Sellers</button>
-          </div>
-        </div>
-        
         <div className="Hottest-card-containers">
           {products.map(product => (
             <div key={product.id} className="product-card">
@@ -322,11 +700,21 @@ export const TradePage = () => {
                 </div>
               </div>
               <div className="product-actions">
-                <button className="add-to-cart-btn">Add to Cart</button>
+                <button 
+                  className={`add-to-cart-btn ${cartItems.some(item => item.id === product.id) ? 'in-cart' : ''}`}
+                  onClick={() => toggleCart(product)}
+                  style={{
+                    background: cartItems.some(item => item.id === product.id) 
+                      ? 'linear-gradient(135deg, #66BB6A, #43A047)'
+                      : 'linear-gradient(135deg, #E57373, #D50000)',
+                  }}
+                >
+                  {cartItems.some(item => item.id === product.id) ? 'In Cart' : 'Add to Cart'}
+                </button>
                 <button 
                   className={`wishlist-btn ${favorites.some(fav => fav.id === product.id) ? 'active' : ''}`}
                   onClick={() => toggleFavorite(product)}
-                  style={{
+          style={{
                     color: favorites.some(fav => fav.id === product.id) ? '#ff4444' : '#666'
                   }}
                 >
@@ -338,60 +726,7 @@ export const TradePage = () => {
         </div>
       </div>
 
-      <div
-        style={{
-          backgroundImage: `url('${SoDidYouLike}')`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          width: "100vw",
-          height: "100vh",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div className="so-did-you-like-overlay"></div>
-        <h1
-          style={{
-            position: "absolute",
-            top: "55%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            fontFamily: "Inknut Antiqua",
-            fontSize: "50px",
-            background: "linear-gradient(135deg, #E57373, #D50000)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            textShadow: "2px 2px 10px rgba(0,0,0,0.2)",
-            padding: "20px",
-            borderRadius: "10px",
-            textAlign: "center",
-            animation: "fadeInUp 1s ease-out",
-          }}
-        >
-          So what did you like?
-        </h1>
-        <h3
-          style={{
-            position: "absolute",
-            bottom: "20%",
-            right: "10%",
-            fontFamily: "Inknut Antiqua",
-            background: "linear-gradient(135deg, #D32F2F, #B71C1C)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            padding: "10px 20px",
-            borderRadius: "30px",
-            animation: "pulse 2s infinite",
-          }}
-        >
-          Pssst! we have more
-        </h3>
-      </div>
-
-      <div
-        className="weHaveMoreSection"
+      <div className="weHaveMoreSection"
         style={{ width: "100%", overflowX: "auto" }}
       >
         {WeHaveMoreImageData.map((image, index) => (
