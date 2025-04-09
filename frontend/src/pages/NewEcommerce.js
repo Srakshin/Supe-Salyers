@@ -1,7 +1,7 @@
 import "../styles/EcommercePage.css";
 import { EcommerceCard } from "../components/EcommerceCard";
 import { useState } from "react";
-
+import Navbarjs from "../components/Navbarr";
 import imagesData from "../assets/ecom/E_COMMERCE_CardData/eComCardData";
 
 import { WeHaveMoreImageData } from "../assets/ecom/WeHaveMore/WeHaveMoreData";
@@ -17,12 +17,8 @@ import Hottest from "../assets/ecom/Hottest.png";
 import SoDidYouLike from "../assets/ecom/SoWhatDidYouLikeBG.png";
 import { Footer } from "../components/Footer";
 import EcoNavbar from "../components/Navbar";
-<<<<<<< Updated upstream
-import Navbarjs from "../components/Navbarr";
-=======
 import TraditionalBoysGallery from "../components/TraditionalBoysGallery";
 
->>>>>>> Stashed changes
 export const TradePage = () => {
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);

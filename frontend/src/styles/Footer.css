@@ -126,18 +126,9 @@
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-<<<<<<< Updated upstream
-
-
-.content a {
-    color: #2b2b2b;
-    text-decoration: none;
-    transition: color 0.3s ease;
-=======
 .footer-list li:hover {
   transform: translateX(3px);
   color: #B71C1C;
->>>>>>> Stashed changes
 }
 
 .footer-list a {
