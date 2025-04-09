@@ -1,6 +1,7 @@
 import { EcommercePage2Card } from "../components/EcommercePage2Card";
 import EcoNavbar from "../components/Navbar";
 import "../styles/EcommercePage2.css";
+import Navbarjs from "../components/Navbarr";
 
 export const TradePage2 = () => {
   const IndiaStates = [
@@ -175,8 +176,10 @@ export const TradePage2 = () => {
   ];
 
   return (
+    
     <div className="eco-page2">
       <EcoNavbar />
+      <Navbarjs />
       <div className="eco-page2-cards-container">
         {IndiaStates.map((state) => (
           <EcommercePage2Card

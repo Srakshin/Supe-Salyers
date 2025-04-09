@@ -1,5 +1,9 @@
 import React from "react";
 import "../styles/Footer.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+
 export const Footer = () => {
   const SocialUrls = [
     {
@@ -56,7 +60,9 @@ export const Footer = () => {
           height: "60%",
           width: "100%",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "space-around", // or use gap if preferred
+          alignItems: "flex-start",
+          gap: "20px",
           marginTop: "3%",
         }}
       >
@@ -110,7 +116,9 @@ export const Footer = () => {
                 // borderRight: "2px solid black",
               }}
             >
-              <h3 className="footer-subtitle">GitHub</h3>
+              <h3 className="footer-subtitle">
+                <FontAwesomeIcon icon={faGithub} /> GitHub
+              </h3>
               <ul
                 className="content"
                 style={{
@@ -133,7 +141,9 @@ export const Footer = () => {
                 width: "100%",
               }}
             >
-              <h3 className="footer-subtitle">LinkedIn</h3>
+              <h3 className="footer-subtitle">
+                <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
+              </h3>
               <ul
                 className="content"
                 style={{
@@ -179,7 +189,10 @@ export const Footer = () => {
                 textAlign: "left",
               }}
             >
-              <h3 className="footer-subtitle">E-mail</h3>
+              <h3 className="footer-subtitle">
+                <FontAwesomeIcon icon={faEnvelope} /> E-mail
+              </h3>
+
               <h4 className="footer-subtitle-content">bsrakshin@gmail.com</h4>
               <h4 className="footer-subtitle-content">kaushalsiripuram@gmail.com</h4>
               <h4 className="footer-subtitle-content">jashwanthmareddy@gmail.com</h4>
@@ -193,7 +206,10 @@ export const Footer = () => {
                 textAlign: "center",
               }}
             >
-              <h3 className="footer-subtitle" >Phone</h3>
+              <h3 className="footer-subtitle">
+                <FontAwesomeIcon icon={faPhone} /> Phone
+              </h3>
+
               <h4 className="footer-subtitle-content">+91 8341606749</h4>
               <h4 className="footer-subtitle-content">+91 9063304286</h4>
               <h4 className="footer-subtitle-content">+91 9347310160</h4>
@@ -231,4 +247,3 @@ export const Footer = () => {
     </footer>
   );
 };
- 

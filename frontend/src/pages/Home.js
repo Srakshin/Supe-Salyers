@@ -27,9 +27,10 @@ import rathBG from "../assets/HomePage/rathBG.png";
 import rathFG from "../assets/HomePage/rathFG.png";
 // Create an array with all the imported images above
 
+
 import flybird from "../assets/HomePage/flybird.gif";
 import birdy from "../assets/HomePage/birdy.gif";
-
+// import Floatingchat from "../components/FloatingChat";
 import Navbarjs from "../components/Navbarr";
 import { Footer } from "../components/Footer";
 import { LoadingPage } from "./LoadingPage";
@@ -275,6 +276,7 @@ const Home = () => {
           id="bird4"
           alt="bird"
         />
+        
         <img
           src={require("../assets/HomePage/birdy.gif")}
           id="bird5"
@@ -320,20 +322,20 @@ const Home = () => {
           strokeMiterlimit: "1.5",
         }}
       >
-        <path
+        {/* <path
           id="wheel"
           d="M123.359,79.775l0,72.843"
           style={{ fill: "none", stroke: "#000000", strokeWidth: "20px" }}
-        />
-        <path
+        /> */}
+        {/* <path
           id="mouse"
           d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z"
           style={{
             fill: "none",
             stroke: "#000000",
             strokeWidth: "20px",
-          }}
-        />
+          }} */}
+        {/* /> */}
       </svg>
       {/* <p>Scroll down</p> */}
       <div class="sec">
@@ -345,6 +347,7 @@ const Home = () => {
             }}
           //  id="heading-h2"
           >
+            
             The Indian Legacy
           </h2>
         </div>

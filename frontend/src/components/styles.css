@@ -1,23 +1,23 @@
 .menu {
     z-index: 99;
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 80%;
     left: 88%;
-    transition: all 300ms linear;
-    position: fixed;
-    background-image: url("https://cdn-icons-png.flaticon.com/512/3909/3909444.png");
+    transition: all 300ms ease-in-out;
+    background-image: url("https://media.istockphoto.com/id/1328771836/vector/india-national-symbol-wheel-gold-emblem-vector.jpg?s=612x612&w=0&k=20&c=Ia2Lf1nhWTkaC4kMoac0c__MXpyCDUQyP-k1rswDrH4=");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     width: 60px;
     height: 60px;
+    border-radius: 50%;
 }
 
 
 .menu-toggler {
     position: absolute;
-    display: block;
+    /* display: block; */
     top: 0;
     bottom: 0;
     right: 0;
@@ -112,7 +112,7 @@
 
 .menu-item:nth-child(3) a {
     transform: rotate(-162deg);
-    opacity: 0;
+    /* opacity: 0; */
 }
 
 .menu-item:nth-child(4) a {
@@ -140,26 +140,24 @@
 }
 
 .menu-item a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: inherit;
     height: inherit;
-    line-height: 62px;
     border-radius: 50%;
-    font-size: 32px;
+    font-size: 26px;
     text-decoration: none;
-    text-align: center;
-    color: #e7e7f7;
-    background: #503f76;
+    color: #fff;
+    background: linear-gradient(145deg, #ba704f, #774329);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s ease;
     pointer-events: none;
-    transition: 0.3s;
-    box-shadow: 6px 6px 27px -8px rgba(0, 0, 0, 0.61);
 }
-
 .menu-item a:hover {
-    box-shadow: 0 0 0 2px rgba(255, 255, 255);
-    color: #e7e7f7;
-    background: #ea0e54;
-    font-size: 40px;
-    box-shadow: 6px 6px 27px -8px rgba(0, 0, 0, 0.61);
-
+    /* box-shadow: 0 0 0 2px rgba(255, 255, 255); */
+    /* color: #e7e7f7;
+    background: #535900; */
+    background: #dd8e5a;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
 }

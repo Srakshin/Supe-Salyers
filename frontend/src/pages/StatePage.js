@@ -18,8 +18,10 @@ const StatePage = () => {
   const [currentCardStateImage, setCurrentCardStateImage] = useState([
     "https://images.unsplash.com/photo-1586612438666-ffd0ae97ad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
     "https://images.unsplash.com/photo-1616693139578-f1c17deb0d4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80",
-    "https://images.unsplash.com/photo-1587295656906-b06dca8f2340?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80",
+    // "https://images.unsplash.com/photo-1587295656906-b06dca8f2340?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80",
+    "https://unsplash.com/photos/brown-concrete-building-during-daytime-SzMR1Vcf5aw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
   ]);
+
 
   const [stateTitle, setStateTitle] = useState("");
   const [stateDesc, setStateDesc] = useState("");
@@ -363,3 +365,4 @@ const StatePage = () => {
 };
 
 export default StatePage;
+

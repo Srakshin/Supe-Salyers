@@ -1,37 +1,57 @@
 import "./styles.css";
+import { MdStorefront } from "react-icons/md";
+// import { BiSolidUpArrowAlt } from "react-icons/bi";
+import { RiMapPin2Line } from "react-icons/ri";
+import { PiChatsCircleThin } from "react-icons/pi";
+import { useState } from "react";
+import FloatingChat from "./FloatingChat";
+// import { PiUsersThreeLight } from "react-icons/pi";
+import { Link } from "react-router-dom";
+import { AiFillHome } from "react-icons/ai";
+import { PiMapTrifoldLight } from "react-icons/pi";
 
-import { BsShop } from "react-icons/bs"
-import {BiSolidUpArrowAlt} from "react-icons/bi"
-
-import {GiIndiaGate} from "react-icons/gi"
 function Navbarjs() {
-  return (
-    <nav class="menu" id="menu">
-      <input class="menu-toggler" type="checkbox" />
-      <label for="menu-toggler"></label>
+  const [showChat, setShowChat] = useState(false);
 
-      <ul
-        style={{
-          transition: "all 300ms linear",
-        }}
-      >
-        <li class="menu-item">
-          <a class="" href="/india"><GiIndiaGate/></a>
-        </li>
-        <li class="menu-item">
-          <a lass="fa-solid fa-shop" href="/trade"><BsShop /></a>
-        </li>
-        <li class="menu-item">
-          <a class="flex items-center" href="/india">  </a>
-        </li>
-        <li class="menu-item">
-          <a class="" href="#top-section"><BiSolidUpArrowAlt /></a>
-        </li> 
-        <li class="menu-item">
-          <a class="fa fa-phone" href="#my-footer"></a>
-        </li>
-      </ul>
-    </nav>
+  const toggleChat = (e) => {
+    e.preventDefault(); // so it doesn't navigate
+    setShowChat((prev) => !prev);
+  };
+
+  return (
+    <>
+      <nav className="menu" id="menu">
+        <input className="menu-toggler" type="checkbox" />
+        <label htmlFor="menu-toggler"></label>
+
+        <ul style={{ transition: "all 300ms linear" }}>
+          {/* 2nd icon*/}
+          <li className="menu-item">
+            {/* Change this to toggle popup */}
+            <a href="#" onClick={toggleChat}><PiChatsCircleThin /></a>
+          </li>
+          {/* 1st icon*/}
+          <li className="menu-item">
+            <Link to="/"><AiFillHome /></Link>
+          </li>
+          {/* 5th icon*/}
+          <li className="menu-item">
+            <a href="/india"><RiMapPin2Line /></a>
+          </li>
+          {/* 4th icon*/}
+          <li className="menu-item">
+            <a href="/itinerary"><PiMapTrifoldLight /></a>
+          </li>
+
+          {/* 3rd icon*/}
+          <li className="menu-item">
+            <a href="/trade"><MdStorefront /></a>
+          </li>
+        </ul>
+      </nav>
+
+      {showChat && <FloatingChat />}
+    </>
   );
 }
 

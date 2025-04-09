@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+.heritage-container {
+  min-height: 100vh;
+  background: linear-gradient(
+  to bottom right,
+  #ff9933 0%,
+  #fffdf6 50%,
+  #138808 100%
+);
+  font-family: 'Georgia', serif;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.heritage-card {
+  background: #fff8f0;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.heritage-title {
+  font-size: 2.6rem;
+  color: #8b2500; /* deep red-brown */
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.heritage-subtitle {
+  font-size: 1.15rem;
+  color: #5c3a21;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.form-grid input,
+.form-grid select {
+  padding: 0.9rem;
+  border: 1px solid #d7ccc8;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  background-color: #fffdf6;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s ease;
+}
+
+.form-grid input:focus,
+.form-grid select:focus {
+  outline: none;
+  border-color: #c96c00;
+  box-shadow: 0 0 5px rgba(255, 128, 0, 0.4);
+}
+
+.generate-button {
+  padding: 0.9rem 2.2rem;
+  background-color: #c96c00;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.generate-button:hover {
+  background-color: #a85400;
+}
+
+.result-box {
+  margin-top: 2.5rem;
+  background: #fff4e1;
+  border: 1px solid #fbc490;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  scrollbar-width: thin;
+  scrollbar-color: #e97c30 #fff8e1;
+}
+
+.result-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.result-box::-webkit-scrollbar-thumb {
+  background-color: #e97c30;
+  border-radius: 4px;
+}
+
+.result-box::-webkit-scrollbar-track {
+  background: #fff8e1;
+}
