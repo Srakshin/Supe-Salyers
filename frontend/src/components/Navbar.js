@@ -9,7 +9,7 @@ function EcoNavbar() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="https://heritagetranslator.streamlit.app/" target="_blank">See More</a>
+            <a href="/trade/more">See More</a>
           </li>
           <li>
             <a href="/india">Explore India</a>

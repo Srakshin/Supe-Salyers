@@ -139,17 +139,10 @@ export const TradePage = () => {
               .form-group { margin-bottom: 15px; }
               .form-group label { display: block; margin-bottom: 5px; color: #333; }
               .form-group input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-              .order-success { display: none; text-align: center; padding: 20px; background: #E8F5E9; border-radius: 8px; margin-top: 20px; }
-              .order-success h2 { color: #2E7D32; margin-bottom: 10px; }
-              .order-success p { color: #1B5E20; margin-bottom: 15px; }
-              .track-order-btn { background: #2E7D32; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
-              .track-order-btn:hover { background: #1B5E20; }
-              .order-steps { display: flex; justify-content: space-between; margin-top: 20px; position: relative; }
-              .step { text-align: center; position: relative; z-index: 1; }
-              .step-icon { width: 40px; height: 40px; background: #E8F5E9; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
-              .step.active .step-icon { background: #4CAF50; color: white; }
-              .step-line { position: absolute; top: 20px; left: 0; right: 0; height: 2px; background: #E8F5E9; z-index: 0; }
-              .step-line-progress { position: absolute; top: 0; left: 0; height: 100%; background: #4CAF50; transition: width 0.3s ease; }
+              .order-success { display: none; text-align: center; padding: 40px; background: #E8F5E9; border-radius: 8px; margin-top: 20px; }
+              .order-success h2 { color: #2E7D32; margin-bottom: 20px; font-size: 28px; }
+              .order-success p { color: #1B5E20; margin-bottom: 15px; font-size: 18px; }
+              .success-icon { font-size: 64px; margin-bottom: 20px; color: #2E7D32; }
             </style>
           </head>
           <body>
@@ -214,30 +207,10 @@ export const TradePage = () => {
             </div>
 
             <div id="orderSuccess" class="order-success">
-              <h2>Order Placed Successfully! 🎉</h2>
+              <div class="success-icon">✓</div>
+              <h2>Order Placed Successfully!</h2>
               <p>Order ID: <span id="orderId"></span></p>
               <p>Thank you for shopping with us!</p>
-              <div class="order-steps">
-                <div class="step-line">
-                  <div class="step-line-progress" id="progressLine"></div>
-                </div>
-                <div class="step active">
-                  <div class="step-icon">✓</div>
-                  <div>Order Placed</div>
-                </div>
-                <div class="step">
-                  <div class="step-icon">📦</div>
-                  <div>Processing</div>
-                </div>
-                <div class="step">
-                  <div class="step-icon">🚚</div>
-                  <div>Shipping</div>
-                </div>
-                <div class="step">
-                  <div class="step-icon">🏠</div>
-                  <div>Delivered</div>
-                </div>
-              </div>
             </div>
 
             <script>
@@ -255,31 +228,6 @@ export const TradePage = () => {
                 document.getElementById('orderId').textContent = orderId;
                 document.getElementById('orderForm').style.display = 'none';
                 document.getElementById('orderSuccess').style.display = 'block';
-                
-                // Simulate order progress
-                let progress = 0;
-                const steps = document.querySelectorAll('.step');
-                const progressLine = document.getElementById('progressLine');
-                
-                function updateProgress() {
-                  progress += 1;
-                  if (progress <= steps.length) {
-                    progressLine.style.width = ((progress - 1) / (steps.length - 1) * 100) + '%';
-                    steps.forEach((step, index) => {
-                      if (index < progress) {
-                        step.classList.add('active');
-                      }
-                    });
-                  }
-                }
-
-                // Update progress every 2 seconds
-                const progressInterval = setInterval(() => {
-                  updateProgress();
-                  if (progress >= steps.length) {
-                    clearInterval(progressInterval);
-                  }
-                }, 2000);
               }
 
               window.removeFromCart = function(id) {
@@ -316,26 +264,6 @@ export const TradePage = () => {
         ))}
       </div>
 
-      <div className="dress-showcase-section">
-        <div className="rectangle-showcase">
-          <div className="rectangle-showcase-1"></div>
-          <img
-            className="largeImages largeImages1"
-            src={largeImage1}
-            alt="LargeImage1"
-          />
-        </div>
-
-        <div className="rectangle-showcase">
-          <div className="rectangle-showcase-2"></div>
-          <img
-            className="largeImages largeImages2"
-            src={largeImage2}
-            alt="LargeImage2"
-          />
-        </div>
-      </div>
-      
       {/* Traditional Boys Gallery Section */}
       <TraditionalBoysGallery />
 
@@ -726,7 +654,60 @@ export const TradePage = () => {
         </div>
       </div>
 
-      <div className="weHaveMoreSection"
+      <div
+        style={{
+          backgroundImage: `url('${SoDidYouLike}')`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          width: "100vw",
+          height: "100vh",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div className="so-did-you-like-overlay"></div>
+        <h1
+          style={{
+            position: "absolute",
+            top: "55%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            fontFamily: "Inknut Antiqua",
+            fontSize: "50px",
+            background: "linear-gradient(135deg, #E57373, #D50000)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            textShadow: "2px 2px 10px rgba(0,0,0,0.2)",
+            padding: "20px",
+            borderRadius: "10px",
+            textAlign: "center",
+            animation: "fadeInUp 1s ease-out",
+          }}
+        >
+          So what did you like?
+        </h1>
+        <h3
+          style={{
+            position: "absolute",
+            bottom: "20%",
+            right: "10%",
+            fontFamily: "Inknut Antiqua",
+            background: "linear-gradient(135deg, #D32F2F, #B71C1C)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            padding: "10px 20px",
+            borderRadius: "30px",
+            animation: "pulse 2s infinite",
+          }}
+        >
+          Pssst! we have more
+        </h3>
+      </div>
+
+      <div
+        className="weHaveMoreSection"
         style={{ width: "100%", overflowX: "auto" }}
       >
         {WeHaveMoreImageData.map((image, index) => (
