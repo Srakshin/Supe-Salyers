@@ -14,6 +14,7 @@ import JFY from "../assets/ecom/JFY.png";
 
 import Hottest from "../assets/ecom/Hottest.png";
 
+import SoDidYouLike from "../assets/ecom/SoWhatDidYouLikeBG.png";
 import { Footer } from "../components/Footer";
 import EcoNavbar from "../components/Navbar";
 import TraditionalBoysGallery from "../components/TraditionalBoysGallery";
@@ -301,7 +302,7 @@ export const TradePage = () => {
             Trade
           </div>
           <div
-            style={{
+          style={{
               width: "100%",
               height: "2px",
               background: "linear-gradient(to right, #D32F2F, transparent)",
@@ -322,29 +323,6 @@ export const TradePage = () => {
                 filter: "blur(1px)"
               }}
             ></div>
-          </div>
-        </div>
-
-        <div
-          style={{
-            position: "absolute",
-            bottom: "40px",
-            left: "40px",
-            maxWidth: "600px"
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "Inknut Antiqua, serif",
-              fontSize: "18px",
-              color: "#666",
-              textAlign: "left",
-              lineHeight: "1.6"
-            }}
-          >
-            Discover the rich heritage of Indian traditional wear and accessories.
-            <br />
-            Find unique pieces that blend timeless traditions with contemporary style.
           </div>
         </div>
 
@@ -390,13 +368,13 @@ export const TradePage = () => {
         }}>
           <button 
             onClick={openCartWindow}
-        style={{
+            style={{
               background: "none",
               border: "none",
               cursor: "pointer",
               fontSize: "24px",
               color: "#4CAF50",
-          position: "relative",
+              position: "relative",
               width: "40px",
               height: "40px",
               display: "flex",
@@ -471,7 +449,7 @@ export const TradePage = () => {
                   <img 
                     src={product.image} 
                     alt={product.name} 
-          style={{
+                    style={{ 
                       width: "60px", 
                       height: "60px", 
                       objectFit: "cover",
@@ -481,10 +459,10 @@ export const TradePage = () => {
                   <div style={{ flex: 1 }}>
                     <h4 style={{ margin: "0 0 5px 0" }}>{product.name}</h4>
                     <p style={{ margin: 0, color: "#4CAF50" }}>₹{product.price}</p>
-        </div>
+                  </div>
                   <button
                     onClick={() => toggleCart(product)}
-          style={{
+                    style={{
                       background: "none",
                       border: "none",
                       cursor: "pointer",
@@ -496,9 +474,9 @@ export const TradePage = () => {
                   </button>
                 </div>
               ))}
-        </div>
+            </div>
           )}
-      </div>
+        </div>
 
         {/* Favorites Bar */}
         <div className="favorites-bar" style={{
@@ -517,13 +495,13 @@ export const TradePage = () => {
         }}>
           <button 
             onClick={() => setShowFavorites(!showFavorites)}
-        style={{
+          style={{
               background: "none",
               border: "none",
               cursor: "pointer",
               fontSize: "24px",
               color: "#ff4444",
-          position: "relative",
+              position: "relative",
               width: "40px",
               height: "40px",
               display: "flex",
@@ -675,6 +653,58 @@ export const TradePage = () => {
           ))}
         </div>
       </div>
+
+      {/* <div
+        style={{
+          backgroundImage: `url('${SoDidYouLike}')`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          width: "100vw",
+          height: "100vh",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div className="so-did-you-like-overlay"></div>
+        <h1
+          style={{
+            position: "absolute",
+            top: "55%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            fontFamily: "Inknut Antiqua",
+            fontSize: "50px",
+            background: "linear-gradient(135deg, #E57373, #D50000)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            textShadow: "2px 2px 10px rgba(0,0,0,0.2)",
+            padding: "20px",
+            borderRadius: "10px",
+            textAlign: "center",
+            animation: "fadeInUp 1s ease-out",
+          }}
+        >
+          So what did you like?
+        </h1>
+        <h3
+          style={{
+            position: "absolute",
+            bottom: "20%",
+            right: "10%",
+            fontFamily: "Inknut Antiqua",
+            background: "linear-gradient(135deg, #D32F2F, #B71C1C)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            padding: "10px 20px",
+            borderRadius: "30px",
+            animation: "pulse 2s infinite",
+          }}
+        >
+          Pssst! we have more
+        </h3>
+      </div> */}
 
       <div
         className="weHaveMoreSection"

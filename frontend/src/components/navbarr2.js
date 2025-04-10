@@ -36,7 +36,7 @@ function Navbarjs() {
           </li>
           {/* 5th icon*/}
           <li className="menu-item">
-            <a href="/translate"><MdTranslate/></a>
+            <a href="https://heritagetranslator.streamlit.app" target="_blank"><MdTranslate/></a>
           </li>
           {/* 4th icon*/}
           <li className="menu-item">
