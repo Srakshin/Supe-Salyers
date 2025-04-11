@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify, send_file
-from fpdf import FPDF
+from flask import Flask, request, jsonify
+# from fpdf import FPDF
 import google.generativeai as genai
 import os
 from flask_cors import CORS
-from io import BytesIO
+# from io import BytesIO
 
 app = Flask(__name__)
 CORS(app)
@@ -32,21 +32,21 @@ def generate_itinerary():
     except Exception as e:
         return jsonify({"itinerary": f"⚠️ Error generating itinerary: {str(e)}"})
 
-@app.route("/download-pdf", methods=["POST"])
-def download_pdf():
-    data = request.json
-    itinerary = data.get("itinerary", "No itinerary content.")
+# @app.route("/download-pdf", methods=["POST"])
+# def download_pdf():
+#     data = request.json
+#     itinerary = data.get("itinerary", "No itinerary content.")
     
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    pdf.multi_cell(0, 10, itinerary)
+#     pdf = FPDF()
+#     pdf.add_page()
+#     pdf.set_font("Arial", size=12)
+#     pdf.multi_cell(0, 10, itinerary)
     
-    pdf_stream = BytesIO()
-    pdf.output(pdf_stream)
-    pdf_stream.seek(0)
+#     pdf_stream = BytesIO()
+#     pdf.output(pdf_stream)
+#     pdf_stream.seek(0)
 
-    return send_file(pdf_stream, as_attachment=True, download_name="Travel_Itinerary.pdf", mimetype="application/pdf")
+#     return send_file(pdf_stream, as_attachment=True, download_name="Travel_Itinerary.pdf", mimetype="application/pdf")
 
 if __name__ == "__main__":
     app.run(debug=True)

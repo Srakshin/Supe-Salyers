@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify, send_file
-from fpdf import FPDF
-from io import BytesIO
+from flask import Flask, request, jsonify
+# from io import BytesIO
 import google.generativeai as genai
 from flask_cors import CORS
 from flask import render_template
@@ -64,25 +63,25 @@ def generate_itinerary():
         return jsonify({"itinerary": f"⚠️ Error generating itinerary: {str(e)}"})
 
 
-@app.route("/download-pdf", methods=["POST"])
-def download_pdf():
-    data = request.json
-    itinerary = data.get("itinerary", "No itinerary content.")
+# @app.route("/download-pdf", methods=["POST"])
+# def download_pdf():
+#     data = request.json
+#     itinerary = data.get("itinerary", "No itinerary content.")
     
-    pdf = FPDF()
-    pdf.add_page()
+#     pdf = FPDF()
+#     pdf.add_page()
 
-    # Add and use the DejaVu font
-    pdf.add_font('DejaVu', '', 'fonts/DejaVuSans.ttf', uni=True)  # Make sure path is correct
-    pdf.set_font("DejaVu", size=12)
+#     # Add and use the DejaVu font
+#     pdf.add_font('DejaVu', '', 'fonts/DejaVuSans.ttf', uni=True)  # Make sure path is correct
+#     pdf.set_font("DejaVu", size=12)
 
-    pdf.multi_cell(0, 10, itinerary)
+#     pdf.multi_cell(0, 10, itinerary)
 
-    pdf_stream = BytesIO()
-    pdf.output(pdf_stream)
-    pdf_stream.seek(0)
+#     pdf_stream = BytesIO()
+#     pdf.output(pdf_stream)
+#     pdf_stream.seek(0)
 
-    return send_file(pdf_stream, as_attachment=True, download_name="Travel_Itinerary.pdf", mimetype="application/pdf")
+#     return send_file(pdf_stream, as_attachment=True, download_name="Travel_Itinerary.pdf", mimetype="application/pdf")
 
 if __name__ == "__main__":
     app.run(debug=True)
