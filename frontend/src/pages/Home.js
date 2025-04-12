@@ -31,7 +31,7 @@ import rathFG from "../assets/HomePage/rathFG.png";
 import flybird from "../assets/HomePage/flybird.gif";
 import birdy from "../assets/HomePage/birdy.gif";
 // import Floatingchat from "../components/FloatingChat";
-import Navbarjs from "../components/Navbarr";
+import Navbarjs from "../components/Navbarr3";
 import { Footer } from "../components/Footer";
 import { LoadingPage } from "./LoadingPage";
 

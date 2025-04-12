@@ -62,6 +62,29 @@ def generate_itinerary():
     except Exception as e:
         return jsonify({"itinerary": f"⚠️ Error generating itinerary: {str(e)}"})
 
+@app.route("/api/events", methods=["GET"])
+def get_events():
+    events = [
+        {
+            "title": "Bharatanatyam Dance Festival",
+            "date": "2025-04-20",
+            "location": "Chennai, Tamil Nadu",
+            "description": "A beautiful celebration of classical Indian dance featuring top performers."
+        },
+        {
+            "title": "Handloom & Textile Expo",
+            "date": "2025-04-25",
+            "location": "Hyderabad, Telangana",
+            "description": "An exhibition showcasing traditional Indian weaves, arts and crafts."
+        },
+        {
+            "title": "Ganga Aarti Mahotsav",
+            "date": "2025-04-18",
+            "location": "Varanasi, Uttar Pradesh",
+            "description": "Experience the spiritual magnificence of the Ganga Aarti."
+        }
+    ]
+    return jsonify(events)
 
 # @app.route("/download-pdf", methods=["POST"])
 # def download_pdf():

@@ -8,7 +8,7 @@ import Navbarjs from "../components/navbarr2";
 
 const IndiaMap = () => {
   const [jsonData, setJsonData] = useState({});
-  const currentStates = ["Rajasthan", "Tamil Nadu", "Uttar Pradesh","Telangana","Andhra Pradesh"];
+  const currentStates = ["Rajasthan"];
   const mapRef = useRef(null); // Create a ref for the map
 
   useEffect(() => {  
@@ -183,10 +183,11 @@ const IndiaMap = () => {
         </h4>
         {/* <br /> */}
         <p>Rajasthan</p>
-        <p>Uttar Pradesh</p>
+        {/* <p>Uttar Pradesh</p>
         <p>Tamil Nadu</p>
         <p>Telangana</p>
-        <p>Andhra Pradesh</p>
+        <p>Andhra Pradesh</p> */}
+      
       </div>
     </div>
   );

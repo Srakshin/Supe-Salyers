@@ -86,29 +86,6 @@ function FloatingChat() {
     }
   };
 
-  // const handleSend = async () => {
-  //   if (!input.trim()) return;
-
-  //   const userMessage = { sender: "user", text: input };
-  //   setMessages((prev) => [...prev, userMessage]);
-
-  //   try {
-  //     const res = await fetch("http://localhost:5000/api/chat", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ message: input }),
-  //     });
-
-  //     const data = await res.json();
-  //     const botReply = { sender: "bot", text: data.reply };
-  //     setMessages((prev) => [...prev, botReply]);
-  //   } catch (err) {
-  //     setMessages((prev) => [...prev, { sender: "bot", text: "Error contacting server" }]);
-  //   }
-
-  //   setInput("");
-  // };
-
   const handleKeyDown = (e) => {
     if (e.key === "Enter") handleSend();
   };
