@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NavbarTop from "../components/NavbarTop";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-// commented mountain #h2-6
+
 
 const Trial = () => {
   useEffect(() => {
@@ -18,7 +18,7 @@ const Trial = () => {
     gsap.registerPlugin(ScrollTrigger);
     let speed = 100;
 
-    /*  SCENE 1 */
+
     let scene1 = gsap.timeline();
     ScrollTrigger.create({
         animation: scene1,
@@ -28,7 +28,6 @@ const Trial = () => {
         scrub: 3,
     });
 
-    // hills animation 
     scene1.to("#h1-1", { y: 3 * speed, x: 1 * speed, scale: 0.9, ease: "power1.in" }, 0)
     scene1.to("#h1-2", { y: 2.6 * speed, x: -0.6 * speed, ease: "power1.in" }, 0)
     scene1.to("#h1-3", { y: 1.7 * speed, x: 1.2 * speed }, 0.03)
@@ -39,12 +38,11 @@ const Trial = () => {
     scene1.to("#h1-8", { y: 3.5 * speed, x: 0.2 * speed }, 0)
     scene1.to("#h1-9", { y: 3.5 * speed, x: -0.2 * speed }, 0)
 
-    //animate text
     scene1.to("#info", { y: 8 * speed }, 0)
 
 
 
-    /*   Bird   */
+
     gsap.fromTo("#bird", { opacity: 1 }, {
         y: -250,
         x: 800,
@@ -60,7 +58,7 @@ const Trial = () => {
     })
 
 
-    /* Clouds  */
+  
     let clouds = gsap.timeline();
     ScrollTrigger.create({
         animation: clouds,
@@ -77,7 +75,7 @@ const Trial = () => {
 
 
 
-    /* Sun motion Animation  */
+    
     let sun = gsap.timeline();
     ScrollTrigger.create({
         animation: sun,
@@ -87,10 +85,9 @@ const Trial = () => {
         scrub: 1,
     });
 
-    //sun motion 
     sun.to("#bg_grad", { attr: { cy: "330" } }, 0.00)
 
-    //bg change
+   
     sun.to("#sun", { attr: { offset: "0.15" } }, 0.00)
     sun.to("#bg_grad stop:nth-child(2)", { attr: { offset: "0.15" } }, 0.00)
     sun.to("#bg_grad stop:nth-child(3)", { attr: { offset: "0.18" } }, 0.00)
@@ -100,7 +97,7 @@ const Trial = () => {
 
 
 
-    /*   SCENE 2  */
+    
     let scene2 = gsap.timeline();
     ScrollTrigger.create({
         animation: scene2,
@@ -115,11 +112,11 @@ const Trial = () => {
     scene2.fromTo("#h2-3", { y: 700 }, { y: 0 }, 0.1)
     scene2.fromTo("#h2-4", { y: 700 }, { y: 0 }, 0.2)
     scene2.fromTo("#h2-5", { y: 800 }, { y: 0 }, 0.3)
-    // scene2.fromTo("#h2-6", { y: 900 }, { y: 0 }, 0.3)
+   
 
 
 
-    /* Bats */
+
     gsap.fromTo("#bats", { opacity: 1, y: 400, scale: 0 }, {
         y: 120,
         scale: 0.8,
@@ -141,7 +138,7 @@ const Trial = () => {
     })
 
 
-    /* Sun increase */
+  
     let sun2 = gsap.timeline();
     ScrollTrigger.create({
         animation: sun2,
@@ -160,7 +157,6 @@ const Trial = () => {
 
 
 
-    /* Transition (from Scene2 to Scene3) */
     gsap.set("#scene3", { y: 580, visibility: "visible" })
     let sceneTransition = gsap.timeline();
     ScrollTrigger.create({
@@ -177,7 +173,7 @@ const Trial = () => {
 
 
 
-    /* Scene 3 */
+   
     let scene3 = gsap.timeline();
     ScrollTrigger.create({
         animation: scene3,
@@ -187,26 +183,23 @@ const Trial = () => {
         scrub: 3,
     });
 
-    //Hills motion
     scene3.fromTo("#h3-1", { y: 300 }, { y: -550 }, 0)
     scene3.fromTo("#h3-2", { y: 800 }, { y: -550 }, 0.03)
     scene3.fromTo("#h3-3", { y: 600 }, { y: -550 }, 0.06)
     scene3.fromTo("#h3-4", { y: 800 }, { y: -550 }, 0.09)
     scene3.fromTo("#h3-5", { y: 1000 }, { y: -550 }, 0.12)
 
-    //stars
     scene3.fromTo("#stars", { opacity: 0 }, { opacity: 0.5, y: -500 }, 0)
 
-    // Scroll Back text
+ 
     scene3.fromTo("#arrow2", { opacity: 0 }, { opacity: 0.7, y: -710 }, 0.25)
     scene3.fromTo("#text2", { opacity: 0 }, { opacity: 0.7, y: -710 }, 0.3)
 
-    //gradient value change
+
     scene3.to("#bg2-grad", { attr: { cy: 600 } }, 0)
     scene3.to("#bg2-grad", { attr: { r: 500 } }, 0)
 
 
-    /*   falling star   */
     gsap.to("#fstar", {
         x: -700,
         y: -250,
@@ -222,7 +215,7 @@ const Trial = () => {
     })
 
 
-    //reset scrollbar position after refresh
+    
     window.onbeforeunload = function() {
         window.scrollTo(0, 0);
     }
@@ -246,7 +239,7 @@ const Trial = () => {
         preserveAspectRatio="xMidYMax slice"
       >
         <defs>
-          {/* <!-- Scene 1 Gradient --> */}
+         
           <linearGradient
             id="grad1"
             x1="-154.32"
@@ -365,7 +358,7 @@ const Trial = () => {
             <stop offset="1" stop-color="#221d42" />
           </linearGradient>
 
-          {/* <!-- Scene2 Gradient --> */}
+        
           <linearGradient
             id="lg4"
             x1="641.98"
@@ -419,7 +412,7 @@ const Trial = () => {
             
           />
 
-          {/* <!-- Scene3 Gradient --> */}
+        
           <radialGradient
             id="bg2-grad"
             cx="365.22"
@@ -529,7 +522,7 @@ const Trial = () => {
           />
         </g>
 
-        {/* <!-- SCENE 2 --> */}
+     
         <g id="scene2">
           <g id="bats" style={{opacity: 0,}}>
             <path

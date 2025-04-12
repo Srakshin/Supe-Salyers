@@ -1,4 +1,4 @@
-// StatePage.js (for Rajasthan)
+
 import React, {useEffect} from "react";
 import ParallaxCard from "../components/ActionCard";
 import "../styles/cards.css";
@@ -11,7 +11,7 @@ import bgimage from "../assets/TamilNadu/Tamil_bg.png";
 import "../styles/Rajasthan.css";
 import NavB from "../components/NavB";
 import BetterNavbar from "../components/BetterNavbar";
-// import NavbarTop from "../components/NavbarTop";
+
 
 const TamilNaduPage = () => {
   const bgColor = "#005E7C";
@@ -81,7 +81,7 @@ const TamilNaduPage = () => {
               display: "flex",
               justifyContent: "space-around",
               alignItems: "center",
-              // margin: "auto",
+             
               marginTop: "35px",
             }}
             className="card-container"

@@ -37,12 +37,7 @@ export const EcommerceCard2 = ({ ImgSrc, imgIndex, title, desc }) => {
       >
 
       </div>
-        {/* <div className="wishlist-button">
-          
-        </div>
-        <div className="cart-button">
-
-        </div> */}
+      
 
       </div>
       <div>

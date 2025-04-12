@@ -1,11 +1,11 @@
 import "./styles.css";
 import { GiStreetLight } from "react-icons/gi"
-// import { BiSolidUpArrowAlt } from "react-icons/bi";
+
 import { MdTranslate } from "react-icons/md";
 import { PiChatsCircleThin } from "react-icons/pi";
 import { useState } from "react";
 import FloatingChat from "./FloatingChat";
-// import { PiUsersThreeLight } from "react-icons/pi";\[/]
+
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { PiMapTrifoldLight } from "react-icons/pi";
@@ -14,7 +14,7 @@ function Navbarjs() {
   const [showChat, setShowChat] = useState(false);
 
   const toggleChat = (e) => {
-    e.preventDefault(); // so it doesn't navigate
+    e.preventDefault(); 
     setShowChat((prev) => !prev);
   };
 

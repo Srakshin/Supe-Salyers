@@ -48,7 +48,7 @@ function AddDataComponent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send formData to the API using the fetch API
+
       const response = await fetch('http://localhost:3001/api/states', {
         method: 'POST',
         headers: {
@@ -70,7 +70,7 @@ function AddDataComponent() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {/* Input fields for stateID, stateName, stateDesc */}
+
         <label htmlFor="stateID">State ID</label>
         <input
           type="text"
@@ -97,7 +97,6 @@ function AddDataComponent() {
           onChange={handleInputChange}
         />
 
-        {/* File upload inputs for cardImage and bgImage */}
         {formData.ImagesData.map((imageData, index) => (
           <div key={index}>
             <label htmlFor={`cardImage-${index}`}>Card Image</label>
@@ -125,7 +124,7 @@ function AddDataComponent() {
               onChange={handleInputChange}
             />
 
-            {/* Display a preview of the selected card image */}
+       
             {imageData.cardImage && (
               <img src={imageData.cardImage} alt={`Card Image ${index}`} />
             )}

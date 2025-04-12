@@ -39,7 +39,7 @@
 .menu-toggler:hover+label,
 .menu-toggler:hover+label:before,
 .menu-toggler:hover+label:after {
-    /* background: #503f76; */
+
     opacity: 0.75;
 }
 
@@ -112,12 +112,12 @@
 
 .menu-item:nth-child(3) a {
     transform: rotate(-162deg);
-    /* opacity: 0; */
+   
 }
 
 .menu-item:nth-child(4) a {
     transform: rotate(-234deg);
-    /* opacity: 0; */
+   
 }
 
 .menu-item:nth-child(5) a {
@@ -155,9 +155,7 @@
     pointer-events: none;
 }
 .menu-item a:hover {
-    /* box-shadow: 0 0 0 2px rgba(255, 255, 255); */
-    /* color: #e7e7f7;
-    background: #535900; */
+    
     background: #dd8e5a;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
 }

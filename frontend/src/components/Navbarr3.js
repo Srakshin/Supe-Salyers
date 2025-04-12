@@ -1,23 +1,22 @@
 import "./styles.css";
 import { MdStorefront } from "react-icons/md";
 import { RiMapPin2Line } from "react-icons/ri";
-import { PiChatsCircleThin, PiMapTrifoldLight, PiCalendarLight } from "react-icons/pi";  // Added PiCalendarLight
+import { PiChatsCircleThin, PiMapTrifoldLight, PiCalendarLight } from "react-icons/pi";  
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import FloatingChat from "./FloatingChat";
-import EventsPopup from "./EventsPopup";  // Ensure this import is correct
+import EventsPopup from "./EventsPopup";  
 
 function Navbarjs() {
     const [showChat, setShowChat] = useState(false);
     const [showEvents, setShowEvents] = useState(false);
 
-    // Toggle chat popup
     const toggleChat = (e) => {
         e.preventDefault();
         setShowChat(prev => !prev);
     };
 
-    // Toggle events popup
+ 
     const toggleEventsPopup = (e) => {
         e.preventDefault();
         setShowEvents(prev => !prev);

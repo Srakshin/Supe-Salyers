@@ -1,7 +1,7 @@
 .floating-popup-box {
     position: fixed;
-    bottom: 90px; /* Adjust this value if needed */
-    right: 40px; /* Same as the chatbot */
+    bottom: -100px; 
+    right: 10px; 
     width: 300px;
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(10px);

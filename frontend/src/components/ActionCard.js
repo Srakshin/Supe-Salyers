@@ -36,7 +36,6 @@ const ParallaxCard = ({
     >
       <div className="overlap-2">
         <Atropos
-          // highlight={false}
           style={{
             height: "100%"
           }}
@@ -47,11 +46,7 @@ const ParallaxCard = ({
           gatherinertia="true"
           shadow={false}
         >
-          {/* <img
-            className={"img"}
-            src={Card_BG}
-            alt={`Layer 1`}
-          /> */}
+          
           <div
             className="img"
             data-atropos-offset={"-2"}

@@ -72,7 +72,6 @@ const StatePage = () => {
       let stt = 0;
       let bgstt = -1;
 
-      // Move the bg element selection inside loadShow function
       let bg = document.getElementById("bgImage-container");
 
       items[active].style.transform = `none`;
@@ -117,12 +116,11 @@ const StatePage = () => {
   }, []);
 
   function removeColon(inputString) {
-    // Check if the colon exists in the string
+
     if (inputString.includes(":")) {
-      // Use replace to remove the colon
+
       return inputString.replace(":", "");
     } else {
-      // Return the original string if no colon is found
       return inputString;
     }
   }
@@ -249,7 +247,7 @@ const StatePage = () => {
           className={`rajasthan-second-screen ${
             currentIndex === index ? "d-block" : "d-none"
           } part-${index + 1}`}
-          // style={{ height: "100vh" }}
+         
         >
           <div id="">
             <h2
@@ -266,7 +264,7 @@ const StatePage = () => {
                 margin: "5%",
               }}
             >
-              {/* Map detailDescription to paragraphs */}
+              
               {detail.detailDescription.map((paragraph, i) => (
                 <div
                   className={
@@ -274,14 +272,14 @@ const StatePage = () => {
                   }
                   key={i}
                   style={{
-                    // Add any common styles here
+      
                     margin: "3%",
-                    // Add specific styles based on the condition
+                    
                     textAlign: i % 2 == 0 ? "left" : "right",
                   }}
                 >
                   {i % 2 === 0 ? (
-                    // If even index, render paragraph first, then image
+                 
                     <>
                       <p className="new-p " data-aos="fade-right">
                         {paragraph.includes(":") ? (
@@ -303,14 +301,14 @@ const StatePage = () => {
                       )}
                     </>
                   ) : (
-                    // If odd index, render image first, then paragraph
+                  
                     <>
                       {detail.detailImages[i] && (
                         <img
                           key={i}
                           src={detail.detailImages[i].detailImage}
                           alt={detail.detailImages[i].detailImageDescription}
-                          // style={{ margin: "20px" }}
+                        
                           data-aos="fade-right"
                         />
                       )}

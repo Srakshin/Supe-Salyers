@@ -1,4 +1,3 @@
-// StatePage.js (for Rajasthan)
 import React, { useEffect, useState } from "react";
 import NavbarTop from "../components/NavbarTop";
 

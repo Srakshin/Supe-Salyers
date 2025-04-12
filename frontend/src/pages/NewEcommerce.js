@@ -264,7 +264,7 @@ export const TradePage = () => {
         ))}
       </div>
 
-      {/* Traditional Boys Gallery Section */}
+  
       <TraditionalBoysGallery />
 
       <div
@@ -351,7 +351,7 @@ export const TradePage = () => {
         </div>
       </div>
 
-        {/* Cart Icon */}
+        
         <div className="cart-bar" style={{
           position: "absolute",
           top: "80px",
@@ -478,7 +478,7 @@ export const TradePage = () => {
           )}
         </div>
 
-        {/* Favorites Bar */}
+    
         <div className="favorites-bar" style={{
           position: "absolute",
           top: "80px",
@@ -654,57 +654,7 @@ export const TradePage = () => {
         </div>
       </div>
 
-      {/* <div
-        style={{
-          backgroundImage: `url('${SoDidYouLike}')`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          width: "100vw",
-          height: "100vh",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div className="so-did-you-like-overlay"></div>
-        <h1
-          style={{
-            position: "absolute",
-            top: "55%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            fontFamily: "Inknut Antiqua",
-            fontSize: "50px",
-            background: "linear-gradient(135deg, #E57373, #D50000)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            textShadow: "2px 2px 10px rgba(0,0,0,0.2)",
-            padding: "20px",
-            borderRadius: "10px",
-            textAlign: "center",
-            animation: "fadeInUp 1s ease-out",
-          }}
-        >
-          So what did you like?
-        </h1>
-        <h3
-          style={{
-            position: "absolute",
-            bottom: "20%",
-            right: "10%",
-            fontFamily: "Inknut Antiqua",
-            background: "linear-gradient(135deg, #D32F2F, #B71C1C)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            padding: "10px 20px",
-            borderRadius: "30px",
-            animation: "pulse 2s infinite",
-          }}
-        >
-          Pssst! we have more
-        </h3>
-      </div> */}
+
 
       <div
         className="weHaveMoreSection"
@@ -718,7 +668,7 @@ export const TradePage = () => {
               backgroundImage: `url('${image.imageSrc}')`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "contain",
-              width: "50%", // Set a fixed width
+              width: "50%", 
               height: "85%",
               marginLeft: "5%",
               flex: "0 0 auto",

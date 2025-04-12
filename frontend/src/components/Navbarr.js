@@ -1,11 +1,10 @@
 import "./styles.css";
 import { MdStorefront } from "react-icons/md";
-// import { BiSolidUpArrowAlt } from "react-icons/bi";
 import { RiMapPin2Line } from "react-icons/ri";
 import { PiChatsCircleThin } from "react-icons/pi";
 import { useState } from "react";
 import FloatingChat from "./FloatingChat";
-// import { PiUsersThreeLight } from "react-icons/pi";\[/]
+
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { PiMapTrifoldLight } from "react-icons/pi";
@@ -14,7 +13,7 @@ function Navbarjs() {
   const [showChat, setShowChat] = useState(false);
 
   const toggleChat = (e) => {
-    e.preventDefault(); // so it doesn't navigate
+    e.preventDefault(); 
     setShowChat((prev) => !prev);
   };
 
@@ -27,7 +26,6 @@ function Navbarjs() {
         <ul style={{ transition: "all 300ms linear" }}>
           {/* 2nd icon*/}
           <li className="menu-item">
-            {/* Change this to toggle popup */}
             <a href="#" onClick={toggleChat}><PiChatsCircleThin /></a>
           </li>
           {/* 1st icon*/}
