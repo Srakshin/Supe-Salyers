@@ -8,9 +8,9 @@ function EcoNavbar() {
           <li>
             <a href="/">Home</a>
           </li>
-          <li>
+          {/* <li>
             <a href="/trade/more">See More</a>
-          </li>
+          </li> */}
           <li>
             <a href="/india">Explore India</a>
           </li>

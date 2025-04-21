@@ -20,7 +20,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import StatePage from "./pages/StatePage";
-import { TradePage2 } from "./pages/EcommercePage2";
+// import { TradePage2 } from "./pages/EcommercePage2";
 import Itinerary from "./pages/Itinerary"; 
 
 const App = () => {
@@ -36,7 +36,7 @@ const App = () => {
       <Route path="/india" element={<IndiaMap />} />
       {/* <Route path="/trade" element={<Ecommerce />} /> */}
       <Route path="/trade" element={<TradePage />} />
-      <Route path="/trade/more" element={<TradePage2 />} />
+      {/* <Route path="/trade/more" element={<TradePage2 />} /> */}
       {/* <Route path="/addData" element={<AddDataComponent />} /> */}
       <Route path={"/state/:stateName"} element={<StatePage />} />
       <Route path="/itinerary" element={<Itinerary />} /> 
