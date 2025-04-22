@@ -39,8 +39,11 @@
   position: relative;
   margin: 0px 2em;
   padding: 1.5px 1.5px;
-  border-radius: 8px;
   transition: all 0.3s ease;
+  /* Removing the background box by setting background to transparent */
+  background: transparent;
+  /* Making the navbar items circular */
+  border-radius: 50px;
   
   /* Enhanced drop-in animation */
   opacity: 0;
@@ -68,9 +71,10 @@
 }
 
 .eco-nav-list li:hover {
-  background-color: rgba(127, 17, 17, 0.1);
+  /* Change to a circular hover effect with transparent background */
+  background-color: transparent;
   transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 6px 14px rgba(168, 21, 21, 0.25);
+  box-shadow: none;
 }
 
 .eco-nav-list li:hover::after {
@@ -87,6 +91,8 @@
   transition: all 0.3s ease;
   display: block;
   padding: 5px 10px;
+  /* Making the link area circular */
+  border-radius: 50px;
 }
 
 .eco-nav-list li:hover a {

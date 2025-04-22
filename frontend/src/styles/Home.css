@@ -10,6 +10,12 @@
     scroll-behavior: smooth;
 }
 
+/* Performance optimization - use hardware acceleration where appropriate */
+.section, .section1, .section2, .section3, .arrow, .grid-image-showcase img {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
 
 body::-webkit-scrollbar {
     display: none;
@@ -21,7 +27,7 @@ body {
             #ffffff 40%,
             #d5f5e3 70%,
             #1ca84d 100%);
-
+    animation: fadeIn 1s ease-out;
 }
 
 
@@ -48,6 +54,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
 .section::before {
@@ -57,7 +66,7 @@ body {
     left: 0;
     width: 100%;
     height: 10%;
-    background: linear-gradient(to top, #f5f5f5 -20%, transparent);
+    background: linear-gradient(to top, #f8f5f0 -20%, transparent);
     z-index: 1;
 
 }
@@ -70,6 +79,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+    animation-delay: 0.4s;
 }
 
 .section1::before {
@@ -79,7 +91,7 @@ body {
     left: 0;
     width: 100%;
     height: 10%;
-    background: linear-gradient(to bottom, #f5f5f5 -15%, transparent);
+    background: linear-gradient(to bottom, #f8f5f0 -15%, transparent);
     z-index: 10;
 }
 
@@ -90,7 +102,7 @@ body {
     left: 0;
     width: 100%;
     height: 10%;
-    background: linear-gradient(to top, #f5f5f5 -15%, transparent);
+    background: linear-gradient(to top, #f8f5f0 -15%, transparent);
     z-index: 10;
 }
 
@@ -186,7 +198,7 @@ body {
     left: 0;
     width: 100%;
     height: 10%;
-    background: linear-gradient(to bottom, #f5f5f5 -15%, transparent);
+    background: linear-gradient(to bottom, #f8f5f0 -15%, transparent);
     z-index: 10;
 }
 
@@ -197,7 +209,7 @@ body {
     left: 0;
     width: 100%;
     height: 10%;
-    background: linear-gradient(to top, #f5f5f5 -15%, transparent);
+    background: linear-gradient(to top, #f8f5f0 -15%, transparent);
     z-index: 10;
 }
 
@@ -209,6 +221,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+    animation-delay: 0.8s;
 }
 
 .section3::before {
@@ -218,7 +233,7 @@ body {
     left: 0;
     width: 100%;
     height: 10%;
-    background: linear-gradient(to bottom, #f5f5f5 -15%, transparent);
+    background: linear-gradient(to bottom, #f8f5f0 -15%, transparent);
     z-index: 10;
 }
 
@@ -229,7 +244,7 @@ body {
     left: 0;
     width: 100%;
     height: 10%;
-    background: linear-gradient(to top, #f5f5f5 -15%, transparent);
+    background: linear-gradient(to top, #f8f5f0 -15%, transparent);
     z-index: 10;
 }
 
@@ -490,4 +505,291 @@ svg #wheel {
   font-family: 'Merriweather', serif;
   font-weight: 700;
   font-style: normal; /* No slant */
+}
+
+/* Add these modern styles after the existing styles */
+
+/* Modern section styles */
+.modern-section {
+  padding: 80px 5%;
+  position: relative;
+  overflow: hidden;
+  background-color: #f8f5f0;
+}
+
+.dark-section {
+  background-color: #1a2639;
+  color: #fff;
+}
+
+.modern-heading {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.modern-heading h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  position: relative;
+}
+
+.heading-underline {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #ff9933, #2c3e50);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.modern-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.modern-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.modern-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.card-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.card-image {
+  flex: 1;
+  height: 400px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.modern-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.card-content h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9933, #2c3e50);
+}
+
+.card-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+  .modern-card, .modern-card.reverse {
+    flex-direction: column;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 300px;
+  }
+  
+  .card-content {
+    padding: 30px;
+  }
+  
+  .modern-heading h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modern-section {
+    padding: 60px 20px;
+  }
+  
+  .modern-grid {
+    gap: 60px;
+  }
+  
+  .card-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .card-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Add animation classes */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slideshow Styles */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+/* Update dark section styles */
+.dark-section .modern-heading h2 {
+  color: #f8f5f0;
+}
+
+.dark-section .card-content h3 {
+  color: #f8f5f0;
+}
+
+.dark-section .card-content p {
+  color: #e0e0e0;
+}
+
+.dark-section .modern-card {
+  background-color: #2c3e50;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dark-section .heading-underline {
+  background: linear-gradient(90deg, #ff9933, #f8f5f0);
+}
+
+.dark-section .card-content h3::after {
+  background: linear-gradient(90deg, #ff9933, #f8f5f0);
+}
+
+/* Add content fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Main content container fade-in */
+.section, .section1, .section2, .section3 {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+.section {
+  animation-delay: 0.2s;
+}
+
+.section1 {
+  animation-delay: 0.4s;
+}
+
+.section2 {
+  animation-delay: 0.6s;
+}
+
+.section3 {
+  animation-delay: 0.8s;
 }

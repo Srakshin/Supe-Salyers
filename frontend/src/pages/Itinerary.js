@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Itinerary.css";
 import Navbarjs from "../components/Navbarr";
+import { LoadingPage } from "./LoadingPage";
 
 const ItineraryPage = () => {
   const [location, setLocation] = useState("");
@@ -8,6 +9,25 @@ const ItineraryPage = () => {
   const [month, setMonth] = useState("");
   const [itinerary, setItinerary] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [initialLoading, setInitialLoading] = useState(true);
+  
+  // Simulate initial page loading
+  useEffect(() => {
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 5;
+      setLoadingProgress(progress);
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          setInitialLoading(false);
+        }, 300);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const months = [
     "January", "February", "March", "April", "May", "June",
@@ -21,6 +41,16 @@ const ItineraryPage = () => {
     }
 
     setLoading(true);
+    // Reset and start progress animation for API call
+    setLoadingProgress(0);
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      // Increment more slowly for API call to avoid reaching 100% too quickly
+      progress += Math.random() * 3;
+      if (progress > 90) progress = 90; // Cap at 90% until real data arrives
+      setLoadingProgress(progress);
+    }, 200);
+
     try {
       const response = await fetch("http://localhost:5000/generate-itinerary", {
         method: "POST",
@@ -31,18 +61,22 @@ const ItineraryPage = () => {
       });
 
       const data = await response.json();
+      clearInterval(progressInterval);
+      setLoadingProgress(100);
       setItinerary(data.itinerary);
+      setTimeout(() => setLoading(false), 500);
     } catch (error) {
+      clearInterval(progressInterval);
+      setLoadingProgress(100);
       setItinerary("⚠️ Error fetching itinerary.");
       console.error(error);
+      setTimeout(() => setLoading(false), 500);
     }
-    setLoading(false);
   };
-
-
 
   return (
     <div className="heritage-container">
+      {(initialLoading || loading) && <LoadingPage percentage={loadingProgress} />}
       <Navbarjs />
       <div className="heritage-card">
         <h1 className="heritage-title">🕌 Bharat Darshan Yatra Planner</h1>
