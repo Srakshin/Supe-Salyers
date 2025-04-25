@@ -4,7 +4,7 @@ import TripNavbar from '../components/TripNavbar';
 import TripProgressBar from '../components/TripProgressBar';
 import { sendConfirmationEmail } from '../Data/email';
 import '../styles/Summary.css';
-import CircularMenu1 from "../components/CircularMenu1";
+import CircularMenu1 from "../components/CircularMenu4";
 
 const Summary = () => {
   const navigate = useNavigate();

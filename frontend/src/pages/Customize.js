@@ -4,7 +4,7 @@ import TripNavbar from '../components/TripNavbar';
 import TripProgressBar from '../components/TripProgressBar';
 import '../styles/Customize.css';
 import classesData from '../classes.json';
-import CircularMenu1 from "../components/CircularMenu1";
+import CircularMenu1 from "../components/CircularMenu4";
 
 const Customize = () => {
   const navigate = useNavigate();

@@ -27,8 +27,9 @@ function CircularMenu2() {
         <ul style={{ transition: "all 300ms linear" }}>
           {/* 2nd icon*/}
           <li className="menu-item">
-            {/* Change this to toggle popup */}
-            <a onClick={toggleChat}><PiChatsCircleThin /></a>
+            <a onClick={toggleChat} style={{ color: "white", fontSize: "2.0rem" }}>
+              <PiChatsCircleThin />
+            </a>
           </li>
           {/* 1st icon*/}
           <li className="menu-item">

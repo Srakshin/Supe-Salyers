@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import TripNavbar from '../components/TripNavbar';
 import { formatBookingId } from '../utils/emailService';
 import '../styles/BookingConfirmation.css';
-import CircularMenu1 from "../components/CircularMenu1";
+import CircularMenu1 from "../components/CircularMenu4";
 
 const BookingConfirmation = () => {
   const navigate = useNavigate();

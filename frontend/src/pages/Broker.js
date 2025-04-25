@@ -6,7 +6,7 @@ import BrokerCard from '../components/BrokerCard';
 import { getZodiacSign, findCompatibleBrokers } from '../Data/zodiac';
 import '../styles/Broker.css';
 import brokersData from '../brokers.json'; // Direct import of brokers data
-import CircularMenu1 from "../components/CircularMenu1";
+import CircularMenu1 from "../components/CircularMenu4";
 const Broker = () => {
   const navigate = useNavigate();
   const [brokers, setBrokers] = useState([]);

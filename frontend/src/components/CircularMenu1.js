@@ -1,23 +1,22 @@
 import "./styles.css";
 import { MdStorefront } from "react-icons/md";
-import { RiMapPin2Line } from "react-icons/ri";
 import { PiChatsCircleThin } from "react-icons/pi";
 import { useState } from "react";
 import FloatingChat from "./FloatingChat";
+import { MdTranslate } from "react-icons/md";
 
-import { Link } from "react-router-dom";
-import { AiFillHome } from "react-icons/ai";
 import { PiMapTrifoldLight } from "react-icons/pi";
+import { GiDirectionSigns } from "react-icons/gi";
 
 function CircularMenu1() {
   const [showChat, setShowChat] = useState(false);
 
   const toggleChat = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setShowChat((prev) => !prev);
   };
 
-  return (
+  return (                                                                                                                                                                           
     <>
       <nav className="menu" id="menu">
         <input className="menu-toggler" type="checkbox" />
@@ -26,17 +25,22 @@ function CircularMenu1() {
         <ul style={{ transition: "all 300ms linear" }}>
           {/* 2nd icon*/}
           <li className="menu-item">
-            <a onClick={toggleChat}><PiChatsCircleThin /></a>
+            <a onClick={toggleChat} style={{ color: "white", fontSize: "2.0rem" }}>
+              <PiChatsCircleThin />
+            </a>
           </li>
           {/* 1st icon*/}
-          <li className="menu-item">
+          {/* <li className="menu-item">
             <Link to="/"><AiFillHome /></Link>
+          </li> */}
+          <li className="menu-item">
+            <a href="https://heritagetranslator.streamlit.app" target="_blank"><MdTranslate/></a>
           </li>
           {/* 5th icon*/}
           <li className="menu-item">
-            <a href="/triptuner"><RiMapPin2Line /></a>
+            <a href="/triptuner"><GiDirectionSigns/></a>
           </li>
-          {/* 4th icon*/}
+          {/* 4th icon*/}                 
           <li className="menu-item">
             <a href="/itinerary"><PiMapTrifoldLight /></a>
           </li>

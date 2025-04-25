@@ -5,7 +5,7 @@ import TripProgressBar from '../components/TripProgressBar';
 import ClassCard from '../components/ClassCard';
 import '../styles/TripHome.css';
 import classesData from '../classes.json';
-import CircularMenu1 from "../components/CircularMenu1";
+import CircularMenu1 from "../components/CircularMenu4";
 
 const TripHome = () => {
   const navigate = useNavigate();
@@ -13,19 +13,19 @@ const TripHome = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedClass, setSelectedClass] = useState(null);
-  
+
   useEffect(() => {
     // Check if a class was previously selected
     const savedClass = localStorage.getItem('triptuner_selected_class');
     if (savedClass) {
       setSelectedClass(JSON.parse(savedClass));
     }
-    
+
     // Fetch travel classes from the classes.json file
     const fetchTravelClasses = async () => {
       try {
         setLoading(true);
-        
+
         // Use the imported classes.json data directly
         setTravelClasses(classesData.classes || []);
         setLoading(false);
@@ -35,15 +35,15 @@ const TripHome = () => {
         setLoading(false);
       }
     };
-    
+
     fetchTravelClasses();
   }, []);
-  
+
   const handleClassSelect = (classData) => {
     setSelectedClass(classData);
     // Store selected class in localStorage for persistence across pages
     localStorage.setItem('triptuner_selected_class', JSON.stringify(classData));
-    
+
     // Check if user is logged in
     const user = localStorage.getItem('triptuner_user');
     if (!user) {
@@ -54,13 +54,13 @@ const TripHome = () => {
       navigate('/triptuner/customize');
     }
   };
-  
+
   return (
     <div className="triptuner-home">
       <TripNavbar />
       <CircularMenu1 />
       <TripProgressBar />
-      
+
       <div className="hero-section">
         <div className="hero-content">
           <h1>Discover Your Perfect Indian Journey</h1>
@@ -68,7 +68,7 @@ const TripHome = () => {
             Customize budget-friendly trips to India's most beautiful spiritual and cultural destinations.
             From Shirdi to Tirupati, create your ideal travel experience with TripTuner.
           </p>
-          <button 
+          <button
             className="cta-button"
             onClick={() => document.getElementById('travel-classes').scrollIntoView({ behavior: 'smooth' })}
           >
@@ -76,7 +76,7 @@ const TripHome = () => {
           </button>
         </div>
       </div>
-      
+
       <div className="how-it-works">
         <div className="container">
           <h2 className="section-title">How TripTuner Works</h2>
@@ -104,25 +104,25 @@ const TripHome = () => {
           </div>
         </div>
       </div>
-      
+
       <div id="travel-classes" className="travel-classes">
         <div className="container">
           <h2 className="section-title">Choose Your Travel Class</h2>
           <p className="section-description">
             Select a travel class that fits your style and budget. Each class can be further customized to create your perfect trip.
           </p>
-          
+
           {loading && (
             <div className="loading-indicator">
               <div className="spinner"></div>
               <p>Loading travel classes...</p>
             </div>
           )}
-          
+
           {error && (
             <div className="error-message">
               <p>{error}</p>
-              <button 
+              <button
                 onClick={() => window.location.reload()}
                 className="retry-button"
               >
@@ -130,20 +130,20 @@ const TripHome = () => {
               </button>
             </div>
           )}
-          
+
           {!loading && !error && (
             <>
               {selectedClass && (
                 <div className="selected-class-banner">
                   <p>You've selected: <strong>{selectedClass.name}</strong></p>
                   <div className="banner-actions">
-                    <button 
+                    <button
                       className="continue-customization"
                       onClick={() => navigate('/triptuner/customize')}
                     >
                       Continue Customization
                     </button>
-                    <button 
+                    <button
                       className="change-selection"
                       onClick={() => {
                         setSelectedClass(null);
@@ -155,11 +155,11 @@ const TripHome = () => {
                   </div>
                 </div>
               )}
-              
+
               <div className="classes-grid">
                 {travelClasses.map(travelClass => (
-                  <ClassCard 
-                    key={travelClass.id} 
+                  <ClassCard
+                    key={travelClass.id}
                     classData={travelClass}
                     onSelect={handleClassSelect}
                     isSelected={selectedClass && selectedClass.id === travelClass.id}
@@ -170,7 +170,7 @@ const TripHome = () => {
           )}
         </div>
       </div>
-      
+
       <div className="featured-destinations">
         <div className="container">
           <h2 className="section-title">Featured Destinations</h2>
@@ -199,7 +199,7 @@ const TripHome = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="testimonials">
         <div className="container">
           <h2 className="section-title">What Our Travelers Say</h2>
@@ -219,12 +219,12 @@ const TripHome = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="cta-section">
         <div className="container">
           <h2>Ready to Start Your Journey?</h2>
           <p>Create your customized travel experience in just a few minutes</p>
-          <button 
+          <button
             className="cta-button"
             onClick={() => document.getElementById('travel-classes').scrollIntoView({ behavior: 'smooth' })}
           >
@@ -232,7 +232,7 @@ const TripHome = () => {
           </button>
         </div>
       </div>
-      
+
       <footer className="triptuner-footer">
         <div className="container">
           <div className="footer-content">

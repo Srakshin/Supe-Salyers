@@ -40,13 +40,13 @@ function FloatingChat() {
   return (
     <div className="floating-chat-box">
       <div className="chat-header">
-        🤖 Ask Me Anything
+        <span className="chat-title">🛕 SisuMitra AI</span>
         <span className="close-btn" onClick={() => setVisible(false)}>✖</span>
       </div>
       <div className="chat-messages">
         {messages.map((m, i) => (
           <div key={i} className={`message ${m.sender}`}>
-            {m.sender === "bot" && <span className="bot-icon">🤖 </span>}
+            {m.sender === "bot" && <span className="bot-icon">🪔 </span>}
             {m.text}
           </div>
         ))}
@@ -63,7 +63,7 @@ function FloatingChat() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Type your message..."
+          placeholder="Ask about Indian heritage..."
         />
         <button onClick={handleSend}>Send</button>
       </div>
