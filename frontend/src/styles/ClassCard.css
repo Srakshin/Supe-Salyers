@@ -1,0 +1,260 @@
+.class-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 350px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid #f0f0f0;
+}
+
+.class-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #FF7722, #f8b400, #FF7722);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.class-card:hover::before {
+  opacity: 1;
+}
+
+/* Selected Class Card Styles */
+.class-card.selected {
+  box-shadow: 0 0 0 2px #FF7722, 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.class-card.selected::before {
+  opacity: 1;
+}
+
+.selected-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #FF7722;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(255, 119, 34, 0.3);
+}
+
+.class-card-image-container {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.class-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.class-card:hover .class-card-image {
+  transform: scale(1.05);
+}
+
+.class-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.class-card-duration {
+  color: white;
+  background-color: rgba(255, 119, 34, 0.9);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.class-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+.class-card-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f8b400,
+    #f8b400 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.class-card:hover .class-card-content::after {
+  opacity: 1;
+}
+
+.class-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.class-card-title {
+  font-size: 1.3rem;
+  color: #E85A0C;
+  margin: 0;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+.class-card-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #FF7722;
+  transition: width 0.3s ease;
+}
+
+.class-card:hover .class-card-title::after {
+  width: 100%;
+}
+
+.class-card-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FF7722;
+}
+
+.class-card-description {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.class-card-subtitle {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.class-card-places {
+  margin-bottom: 1.2rem;
+}
+
+.class-card-places-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.class-card-place-tag {
+  background-color: #fff9e6;
+  color: #E85A0C;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 119, 34, 0.2);
+}
+
+.class-card-place-tag.more {
+  background-color: #f0f0f0;
+  color: #777;
+  border: 1px solid #e0e0e0;
+}
+
+.class-card-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.class-card-customize-btn {
+  display: inline-block;
+  background-color: #FF7722;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.class-card-customize-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(30deg);
+  transition: transform 0.6s ease;
+}
+
+.class-card-customize-btn:hover {
+  background-color: #E85A0C;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.class-card-customize-btn:hover::after {
+  transform: rotate(30deg) translate(100%, 100%);
+}
+
+.class-card-customize-btn.selected {
+  background-color: #FF7722;
+  border: 2px solid #FFD700;
+}
+
+.class-card-customize-btn.selected:hover {
+  background-color: #E85A0C;
+} 

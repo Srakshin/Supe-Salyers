@@ -34,7 +34,7 @@ function CircularMenu1() {
           </li>
           {/* 5th icon*/}
           <li className="menu-item">
-            <a href="/india"><RiMapPin2Line /></a>
+            <a href="/triptuner"><RiMapPin2Line /></a>
           </li>
           {/* 4th icon*/}
           <li className="menu-item">

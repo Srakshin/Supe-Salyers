@@ -1,10 +1,17 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Translator from "./pages/Translator";
 // import FloatingChat from "./components/FloatingChat";
 import StreetView from "./pages/StreetView"; 
 
+// TripTuner Pages
+import TripHome from "./pages/TripHome";
+import Customize from "./pages/Customize";
+import Summary from "./pages/Summary";
+import Broker from "./pages/Broker";
+// import Login from "./pages/Login";
+// import LoadingPage from "./pages/LoadingPage";
 
 // STATES
 
@@ -19,8 +26,12 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import Itinerary from "./pages/Itinerary"; 
+import BookingConfirmation from "./pages/BookingConfirmation";
+import Login from "./pages/Login";
 
 const App = () => {
+  const location = useLocation();
+  
   useEffect(() => {
     // Initialize AOS with performance optimizations
     AOS.init({
@@ -48,19 +59,28 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Check if current route is a TripTuner route
+  const isTripTunerRoute = location.pathname.includes('/triptuner') || 
+                           location.pathname === '/login' || 
+                           location.pathname === '/booking-confirmation';
+
   return (
     <Routes>
+      {/* Main Routes */}
+      <Route path="/" index element={<Home />} />
       <Route path="/trans" element={<OutroTransition />} />
-
-      <Route exact path="/" index element={<Home />} />
-      {/* <Route path="/trade" element={<Ecommerce />} /> */}
       <Route path="/trade" element={<TradePage />} />
-      {/* <Route path="/trade/more" element={<TradePage2 />} /> */}
       <Route path="/itinerary" element={<Itinerary />} /> 
-      {/* text to speech */}
       <Route path="/translate" element={<Translator/>} />
-    
       <Route path="/streetview" element={<StreetView />} />
+
+      {/* TripTuner Routes - Organized by user flow */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/triptuner" element={<TripHome />} />
+      <Route path="/triptuner/customize" element={<Customize />} />
+      <Route path="/triptuner/broker" element={<Broker />} />
+      <Route path="/triptuner/summary" element={<Summary />} />
+      <Route path="/booking-confirmation" element={<BookingConfirmation />} />
     </Routes>
   );
 };

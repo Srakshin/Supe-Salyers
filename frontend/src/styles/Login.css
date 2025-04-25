@@ -1,0 +1,385 @@
+.login-page {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.login-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  min-height: calc(100vh - 150px);
+}
+
+.login-content {
+  flex: 1;
+  padding: 3rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-header {
+  margin-bottom: 2rem;
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #546de5;
+  outline: none;
+}
+
+.form-group small {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.login-button {
+  width: 100%;
+  background-color: #FF7722;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(30deg);
+  transition: transform 0.6s ease;
+}
+
+.login-button:hover {
+  background-color: #E85A0C;
+  transform: translateY(-2px);
+}
+
+.login-button:hover::after {
+  transform: rotate(30deg) translate(100%, 100%);
+}
+
+.login-button:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.auth-switch {
+  margin-top: auto;
+  text-align: center;
+}
+
+.auth-switch p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.switch-button {
+  background: none;
+  border: none;
+  color: #FF7722;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.switch-button:hover {
+  color: #E85A0C;
+  background-color: rgba(255, 119, 34, 0.05);
+}
+
+.navigation-options {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.back-to-home {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.back-to-home:hover {
+  color: #FF7722;
+}
+
+.alert {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.alert-success {
+  background-color: #d1fae5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.login-image {
+  flex: 1;
+  background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1200');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 2rem;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(148, 58, 9, 0.4), rgba(122, 35, 1, 0.7));
+}
+
+.image-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 500px;
+}
+
+.image-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.image-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Email Modal Styles */
+.email-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.email-modal {
+  background-color: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 480px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  color: #ff6b6b;
+}
+
+.email-modal-content {
+  text-align: center;
+}
+
+.email-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #edf2ff;
+  color: #546de5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+}
+
+.email-modal-content h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.email-modal-content p {
+  color: #666;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.continue-button {
+  background-color: #FF7722;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.continue-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(30deg);
+  transition: transform 0.6s ease;
+}
+
+.continue-button:hover {
+  background-color: #E85A0C;
+  transform: translateY(-2px);
+}
+
+.continue-button:hover::after {
+  transform: rotate(30deg) translate(100%, 100%);
+}
+
+@media (max-width: 992px) {
+  .login-container {
+    flex-direction: column;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .login-content {
+    padding: 2rem;
+  }
+  
+  .login-image {
+    min-height: 300px;
+  }
+  
+  .email-modal {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .login-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .login-content {
+    padding: 1.5rem;
+  }
+  
+  .form-group input {
+    padding: 0.7rem;
+  }
+  
+  .email-modal-content h3 {
+    font-size: 1.3rem;
+  }
+} 
