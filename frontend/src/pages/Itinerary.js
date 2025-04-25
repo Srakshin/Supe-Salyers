@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Itinerary.css";
-import Navbarjs from "../components/Navbarr";
+import CircularMenu1 from "../components/CircularMenu1";
 import { LoadingPage } from "./LoadingPage";
 
 const ItineraryPage = () => {
@@ -77,7 +77,7 @@ const ItineraryPage = () => {
   return (
     <div className="heritage-container">
       {(initialLoading || loading) && <LoadingPage percentage={loadingProgress} />}
-      <Navbarjs />
+      <CircularMenu1 />
       <div className="heritage-card">
         <h1 className="heritage-title">🕌 Bharat Darshan Yatra Planner</h1>
         <p className="heritage-subtitle">

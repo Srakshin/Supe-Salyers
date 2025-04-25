@@ -11,7 +11,6 @@ import bg from "../assets/HomePage/full.png";
 import fg from "../assets/HomePage/man2.png";
 import ramayanBG from "../assets/HomePage/ramayanBG.png";
 import ramayanFG from "../assets/HomePage/ramayanFG.png";
-import krishnaBG from "../assets/HomePage/krishnaBG.png";
 import arrowFG from "../assets/HomePage/arrowFG.png";
 import arrowBGNew from "../assets/HomePage/RamHoverBG_Large.png";
 import arrowRotate from "../assets/HomePage/arrowRotate.png";
@@ -64,7 +63,7 @@ import slide11_1 from "../assets/Home/11.1.jpg";
 import slide11_2 from "../assets/Home/11.2.jpg";
 import slide11_3 from "../assets/Home/11.3.jpg";
 
-import Navbarjs from "../components/Navbarr";
+import CircularMenu1 from "../components/CircularMenu1";
 import { Footer } from "../components/Footer";
 import { LoadingPage } from "./LoadingPage";
 
@@ -132,7 +131,6 @@ const Home = () => {
   const rmynFGRef = useRef(null);
   const cloud1Ref = useRef(null);
   const cloud2Ref = useRef(null);
-  const krishnaBGRef = useRef(null);
   const textRef = useRef(null);
   const headingH2Ref = useRef(null);
   const arrowBGNewRef = useRef(null);
@@ -272,7 +270,7 @@ const Home = () => {
     if (!imagesLoaded) return;
     
     // Create a timeline for better performance
-    const tl = gsap.timeline();
+    // const tl = gsap.timeline();
     
     // Batch animations for better performance
     const scrollAnimations = () => {
@@ -338,13 +336,6 @@ const Home = () => {
       });
 
       // Other animations
-      gsap.to(krishnaBGRef.current, {
-        scrollTrigger: {
-          scrub: 2,
-        },
-        scale: 5,
-      });
-
       gsap.to(textRef.current, {
         scrollTrigger: {
           scrub: 1,
@@ -425,12 +416,12 @@ const Home = () => {
 
     // Debounce scroll events
     let timeout;
-    const handleScroll = () => {
-      if (timeout) {
-        window.cancelAnimationFrame(timeout);
-      }
-      timeout = window.requestAnimationFrame(scrollAnimations);
-    };
+    // const handleScroll = () => {
+    //   if (timeout) {
+    //     window.cancelAnimationFrame(timeout);
+    //   }
+    //   timeout = window.requestAnimationFrame(scrollAnimations);
+    // };
 
     // Initialize animations
     scrollAnimations();
@@ -451,7 +442,7 @@ const Home = () => {
   return (
     <div>
       {!imagesLoaded && <LoadingPage percentage={loadingProgress} />}
-      <Navbarjs />
+      <CircularMenu1 />
       <section className="section" id="top-section">
         <img src={bg} id="bg" alt="bg" ref={bgRef} />
         <h5 id="text" ref={textRef}>INDIAN HERITAGE</h5>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/StreetView.css';
-import Navbarjs from "../components/Navbarr";
+import CircularMenu1 from "../components/CircularMenu1";
 import { LoadingPage } from "./LoadingPage";
 
 const StreetView = () => {
@@ -75,7 +75,7 @@ const StreetView = () => {
   return (
     <div className="streetview-container">
       {(initialLoading || loading) && <LoadingPage percentage={loadingProgress} />}
-      <Navbarjs />
+      <CircularMenu1 />
       <h1>🛕 Explore India - Street View (Mapillary)</h1>
       <input
         type="text"

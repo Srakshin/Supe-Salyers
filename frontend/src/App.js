@@ -5,6 +5,7 @@ import Translator from "./pages/Translator";
 // import FloatingChat from "./components/FloatingChat";
 import StreetView from "./pages/StreetView"; 
 
+
 // STATES
 
 // import { Ecommerce } from "./pages/Ecommerce";
@@ -58,6 +59,7 @@ const App = () => {
       <Route path="/itinerary" element={<Itinerary />} /> 
       {/* text to speech */}
       <Route path="/translate" element={<Translator/>} />
+    
       <Route path="/streetview" element={<StreetView />} />
     </Routes>
   );

@@ -1,7 +1,7 @@
 import "../styles/TradePage.css";
 import { EcommerceCard } from "../components/EcommerceCard";
 import { useState, useEffect } from "react";
-import Navbarjs from "../components/Navbarr";
+import CircularMenu1 from "../components/CircularMenu2";
 import imagesData from "../assets/ecom/E_COMMERCE_CardData/eComCardData";
 import { WeHaveMoreImageData } from "../assets/ecom/WeHaveMore/WeHaveMoreData";
 import EcoNavbar from "../components/Navbar";
@@ -16,7 +16,6 @@ export const TradePage = () => {
   const [cartWindow, setCartWindow] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  const [productImages, setProductImages] = useState([]);
 
   const initialProducts = [
     {
@@ -75,8 +74,6 @@ export const TradePage = () => {
       ...imagesData.map(item => item.imgSrc),
       // Add other important images here
     ];
-    
-    setProductImages(imagesToPreload);
     
     let loadedCount = 0;
     let progress = 10; // Start at 10% immediately for better UX
@@ -292,14 +289,14 @@ export const TradePage = () => {
     }
   };
 
-  const removeFromCart = (productId) => {
+  window.removeFromCart = (productId) => {
     setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
   };
 
   return (
     <div className="index">
       {initialLoading && <LoadingPage percentage={loadingProgress} />}
-      <Navbarjs />
+      <CircularMenu1 />
       <EcoNavbar />
       <div className="Categories-Intro">
         <div className="Categories-Intro-Title">CATEGORIES</div>
