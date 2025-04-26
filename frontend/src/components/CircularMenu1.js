@@ -4,12 +4,14 @@ import { PiChatsCircleThin } from "react-icons/pi";
 import { useState } from "react";
 import FloatingChat from "./FloatingChat";
 import { MdTranslate } from "react-icons/md";
+import useCircularMenuVoice from "./CircularMenuVoice";
 
 import { PiMapTrifoldLight } from "react-icons/pi";
 import { GiDirectionSigns } from "react-icons/gi";
 
 function CircularMenu1() {
   const [showChat, setShowChat] = useState(false);
+  const menuTogglerRef = useCircularMenuVoice();
 
   const toggleChat = (e) => {
     e.preventDefault();
@@ -19,35 +21,48 @@ function CircularMenu1() {
   return (                                                                                                                                                                           
     <>
       <nav className="menu" id="menu">
-        <input className="menu-toggler" type="checkbox" />
+        <input 
+          className="menu-toggler" 
+          type="checkbox" 
+          ref={menuTogglerRef}
+          data-voice-target="circular-menu"
+        />
         <label htmlFor="menu-toggler"></label>
 
         <ul style={{ transition: "all 300ms linear" }}>
-          {/* 2nd icon*/}
-          <li className="menu-item">
-            <a onClick={toggleChat} style={{ color: "white", fontSize: "2.0rem" }}>
+          {/* Chat icon */}
+          <li className="menu-item" data-voice-item="chat">
+            <a onClick={toggleChat} style={{ color: "white", fontSize: "2.0rem" }} data-voice-action="chat">
               <PiChatsCircleThin />
             </a>
           </li>
-          {/* 1st icon*/}
-          {/* <li className="menu-item">
-            <Link to="/"><AiFillHome /></Link>
-          </li> */}
-          <li className="menu-item">
-            <a href="https://heritagetranslator.streamlit.app" target="_blank"><MdTranslate/></a>
+          
+          {/* Translate icon */}
+          <li className="menu-item" data-voice-item="translate">
+            <a href="https://heritagetranslator.streamlit.app" target="_blank" data-voice-action="translate">
+              <MdTranslate/>
+            </a>
           </li>
-          {/* 5th icon*/}
-          <li className="menu-item">
-            <a href="/triptuner"><GiDirectionSigns/></a>
+          
+          {/* Trip planner icon */}
+          <li className="menu-item" data-voice-item="trip">
+            <a href="/triptuner" data-voice-action="trip">
+              <GiDirectionSigns/>
+            </a>
           </li>
-          {/* 4th icon*/}                 
-          <li className="menu-item">
-            <a href="/itinerary"><PiMapTrifoldLight /></a>
+          
+          {/* Itinerary icon */}                 
+          <li className="menu-item" data-voice-item="itinerary">
+            <a href="/itinerary" data-voice-action="itinerary">
+              <PiMapTrifoldLight />
+            </a>
           </li>
 
-          {/* 3rd icon*/}
-          <li className="menu-item">
-            <a href="/trade"><MdStorefront /></a>
+          {/* Trade icon */}
+          <li className="menu-item" data-voice-item="trade">
+            <a href="/trade" data-voice-action="trade">
+              <MdStorefront />
+            </a>
           </li>
         </ul>
       </nav>

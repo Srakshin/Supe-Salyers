@@ -4,6 +4,10 @@ import Home from "./pages/Home";
 import Translator from "./pages/Translator";
 // import FloatingChat from "./components/FloatingChat";
 import StreetView from "./pages/StreetView"; 
+import VoiceControlledApp from "./components/VoiceControlledApp";
+import VoiceControlDemo from "./pages/VoiceControlDemo";
+import VoiceCompat from "./pages/VoiceCompat";
+import GlobalVoiceControl from "./components/GlobalVoiceControl";
 
 // TripTuner Pages
 import TripHome from "./pages/TripHome";
@@ -65,23 +69,31 @@ const App = () => {
                            location.pathname === '/booking-confirmation';
 
   return (
-    <Routes>
-      {/* Main Routes */}
-      <Route path="/" index element={<Home />} />
-      <Route path="/trans" element={<OutroTransition />} />
-      <Route path="/trade" element={<TradePage />} />
-      <Route path="/itinerary" element={<Itinerary />} /> 
-      <Route path="/translate" element={<Translator/>} />
-      <Route path="/streetview" element={<StreetView />} />
+    <>
+      <Routes>
+        {/* Main Routes */}
+        <Route path="/" index element={<Home />} />
+        <Route path="/trans" element={<OutroTransition />} />
+        <Route path="/trade" element={<TradePage />} />
+        <Route path="/itinerary" element={<Itinerary />} /> 
+        <Route path="/translate" element={<Translator/>} />
+        <Route path="/streetview" element={<StreetView />} />
+        <Route path="/voice-control" element={<VoiceControlledApp />} />
+        <Route path="/voice-demo" element={<VoiceControlDemo />} />
+        <Route path="/voice-compat" element={<VoiceCompat />} />
 
-      {/* TripTuner Routes - Organized by user flow */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/triptuner" element={<TripHome />} />
-      <Route path="/triptuner/customize" element={<Customize />} />
-      <Route path="/triptuner/broker" element={<Broker />} />
-      <Route path="/triptuner/summary" element={<Summary />} />
-      <Route path="/booking-confirmation" element={<BookingConfirmation />} />
-    </Routes>
+        {/* TripTuner Routes - Organized by user flow */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/triptuner" element={<TripHome />} />
+        <Route path="/triptuner/customize" element={<Customize />} />
+        <Route path="/triptuner/broker" element={<Broker />} />
+        <Route path="/triptuner/summary" element={<Summary />} />
+        <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+      </Routes>
+      
+      {/* Global Voice Control Component - Available on all pages */}
+      <GlobalVoiceControl />
+    </>
   );
 };
 
