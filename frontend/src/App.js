@@ -32,6 +32,7 @@ import 'aos/dist/aos.css';
 import Itinerary from "./pages/Itinerary"; 
 import BookingConfirmation from "./pages/BookingConfirmation";
 import Login from "./pages/Login";
+import SellerPage from './pages/SellerPage';
 
 const App = () => {
   const location = useLocation();
@@ -81,6 +82,7 @@ const App = () => {
         <Route path="/voice-control" element={<VoiceControlledApp />} />
         <Route path="/voice-demo" element={<VoiceControlDemo />} />
         <Route path="/voice-compat" element={<VoiceCompat />} />
+        <Route path="/seller" element={<SellerPage />} />
 
         {/* TripTuner Routes - Organized by user flow */}
         <Route path="/login" element={<Login />} />

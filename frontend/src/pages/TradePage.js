@@ -7,6 +7,7 @@ import { WeHaveMoreImageData } from "../assets/ecom/WeHaveMore/WeHaveMoreData";
 import EcoNavbar from "../components/Navbar";
 import TraditionalBoysGallery from "../components/TraditionalBoysGallery";
 import { LoadingPage } from "./LoadingPage";
+import { Link } from "react-router-dom";
 
 export const TradePage = () => {
   const [favorites, setFavorites] = useState([]);
@@ -16,10 +17,13 @@ export const TradePage = () => {
   const [cartWindow, setCartWindow] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const initialProducts = [
+    // Clothing Category
     {
       id: 1,
+      category: "Clothes",
       name: "Designer Kurta Set",
       price: 1899,
       originalPrice: 2499,
@@ -31,6 +35,7 @@ export const TradePage = () => {
     },
     {
       id: 2,
+      category: "Clothes",
       name: "Festive Sherwani",
       price: 3499,
       originalPrice: 4999,
@@ -42,6 +47,7 @@ export const TradePage = () => {
     },
     {
       id: 3,
+      category: "Clothes",
       name: "Traditional Dhoti Set",
       price: 2299,
       originalPrice: 2999,
@@ -53,6 +59,7 @@ export const TradePage = () => {
     },
     {
       id: 4,
+      category: "Clothes",
       name: "Wedding Collection Kurta",
       price: 1699,
       originalPrice: 2999,
@@ -61,65 +68,228 @@ export const TradePage = () => {
       reviews: 103,
       badge: "Sale",
       image: "https://www.manyavar.com/dw/image/v2/BJZV_PRD/on/demandware.static/-/Library-Sites-ManyavarSharedLibrary/default/dw3f97cca9/How%20to%20Style%20a%20Kurta%20for%20a%20Wedding%20Party%20Dos%20and%20Don%E2%80%99ts_Blog_2_D_M.jpg"
+    },
+    {
+      id: 5,
+      category: "Clothes",
+      name: "Silk Banarasi Saree",
+      price: 5999,
+      originalPrice: 7999,
+      discount: "25%",
+      rating: 5,
+      reviews: 127,
+      badge: "Premium",
+      image: "https://images.unsplash.com/photo-1618901185975-d59f7091bcfe?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 6,
+      category: "Clothes",
+      name: "Handwoven Cotton Saree",
+      price: 2499,
+      originalPrice: 3299,
+      discount: "24%",
+      rating: 4.5,
+      reviews: 87,
+      badge: "Handcrafted",
+      image: "https://images.unsplash.com/photo-1610189012906-4c0aa9b9781e?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    
+    // Spices Category
+    {
+      id: 7,
+      category: "Spices",
+      name: "Premium Kashmiri Saffron",
+      price: 1299,
+      originalPrice: 1599,
+      discount: "19%",
+      rating: 5,
+      reviews: 78,
+      badge: "Premium",
+      image: "https://images.unsplash.com/flagged/photo-1616462432325-36ee9a32fd0a?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 8,
+      category: "Spices",
+      name: "Organic Turmeric Powder",
+      price: 299,
+      originalPrice: 399,
+      discount: "25%",
+      rating: 4.5,
+      reviews: 152,
+      badge: "Organic",
+      image: "https://images.unsplash.com/photo-1595414902678-862fe51c9f27?q=80&w=2660&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 9,
+      category: "Spices",
+      name: "Kerala Black Pepper",
+      price: 349,
+      originalPrice: 499,
+      discount: "30%",
+      rating: 4.5,
+      reviews: 64,
+      badge: "Bestseller",
+      image: "https://images.unsplash.com/photo-1741518165765-af1c27e6795e?q=80&w=2691&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 10,
+      category: "Spices",
+      name: "Exotic Spice Gift Box",
+      price: 1899,
+      originalPrice: 2499,
+      discount: "24%",
+      rating: 5,
+      reviews: 42,
+      badge: "Gift",
+      image: "https://images.unsplash.com/photo-1590052210004-8935aa660ff2?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    
+    // Instruments Category
+    {
+      id: 11,
+      category: "Instruments",
+      name: "Professional Tabla Set",
+      price: 8999,
+      originalPrice: 11999,
+      discount: "25%",
+      rating: 4.5,
+      reviews: 38,
+      badge: "Premium",
+      image: "https://images.unsplash.com/photo-1732359875125-da42b0e6297f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 12,
+      category: "Instruments",
+      name: "Rosewood Sitar",
+      price: 15999,
+      originalPrice: 18999,
+      discount: "16%",
+      rating: 5,
+      reviews: 24,
+      badge: "Handcrafted",
+      image: "https://plus.unsplash.com/premium_photo-1700670284018-17d39357f45c?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 13,
+      category: "Instruments",
+      name: "Bamboo Flute Set",
+      price: 1299,
+      originalPrice: 1699,
+      discount: "24%",
+      rating: 4.5,
+      reviews: 91,
+      badge: "Bestseller",
+      image: "https://images.unsplash.com/photo-1558299244-f4bb4dd735b2?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 14,
+      category: "Instruments",
+      name: "Traditional Harmonium",
+      price: 7999,
+      originalPrice: 9999,
+      discount: "20%",
+      rating: 4.5,
+      reviews: 47,
+      badge: "Popular",
+      image: "https://plus.unsplash.com/premium_photo-1681738775173-fced8021c53a?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    
+    // Handicrafts Category
+    {
+      id: 15,
+      category: "HandiCrafts",
+      name: "Marble Taj Mahal Replica",
+      price: 2999,
+      originalPrice: 3999,
+      discount: "25%",
+      rating: 5,
+      reviews: 118,
+      badge: "Bestseller",
+      image: "https://images.unsplash.com/photo-1694378061058-bb6532de3bba?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 16,
+      category: "HandiCrafts",
+      name: "Brass Buddha Statue",
+      price: 1499,
+      originalPrice: 1999,
+      discount: "25%",
+      rating: 4.5,
+      reviews: 86,
+      badge: "Handmade",
+      image: "https://images.unsplash.com/photo-1667232235505-8e95709eeb49?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 17,
+      category: "HandiCrafts",
+      name: "Rajasthani Puppet Set",
+      price: 899,
+      originalPrice: 1299,
+      discount: "31%",
+      rating: 4,
+      reviews: 42,
+      badge: "Traditional",
+      image: "https://images.unsplash.com/photo-1630346789968-e2799a467caf?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 18,
+      category: "HandiCrafts",
+      name: "Hand-painted Wooden Elephant",
+      price: 799,
+      originalPrice: 1099,
+      discount: "27%",
+      rating: 4.5,
+      reviews: 64,
+      badge: "Artisanal",
+      image: "https://images.unsplash.com/photo-1738717073370-80998187a5b9?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 19,
+      category: "HandiCrafts",
+      name: "Kashmir Papier-Mâché Box",
+      price: 1299,
+      originalPrice: 1699,
+      discount: "24%",
+      rating: 5,
+      reviews: 37,
+      badge: "Heritage",
+      image: "https://plus.unsplash.com/premium_photo-1732212205909-b445f958d89f?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      id: 20,
+      category: "HandiCrafts",
+      name: "Madhubani Painting",
+      price: 2499,
+      originalPrice: 2999,
+      discount: "17%",
+      rating: 4.5,
+      reviews: 29,
+      badge: "Limited",
+      image: "https://plus.unsplash.com/premium_photo-1678257846725-e88b5280900b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
   ];
 
   const [products] = useState(initialProducts);
 
-  // Simulate initial page loading with product image preloading
   useEffect(() => {
-    // Collect all product images for preloading
-    const imagesToPreload = [
-      ...initialProducts.map(p => p.image),
-      ...imagesData.map(item => item.imgSrc),
-      // Add other important images here
-    ];
-    
-    let loadedCount = 0;
-    let progress = 10; // Start at 10% immediately for better UX
-    setLoadingProgress(progress);
-    
-    // Initial progress increment (simulates application loading)
-    const initialInterval = setInterval(() => {
-      progress += 2;
-      if (progress >= 30) { // Cap at 30% until images start loading
-        clearInterval(initialInterval);
-      }
-      setLoadingProgress(progress);
-    }, 100);
-    
-    // Preload images
-    imagesToPreload.forEach(src => {
-      const img = new Image();
-      img.onload = () => {
-        loadedCount++;
-        // Calculate progress: 30% base + 70% for images
-        const imageProgress = Math.floor((loadedCount / imagesToPreload.length) * 70);
-        progress = 30 + imageProgress;
-        setLoadingProgress(progress);
-        
-        if (loadedCount === imagesToPreload.length) {
-          clearInterval(initialInterval);
-          // Complete loading
-          setLoadingProgress(100);
-          setTimeout(() => {
-            setInitialLoading(false);
-          }, 500);
-        }
-      };
-      img.onerror = () => {
-        loadedCount++;
-        // Still count errors as progress to avoid getting stuck
-        const imageProgress = Math.floor((loadedCount / imagesToPreload.length) * 70);
-        progress = 30 + imageProgress;
-        setLoadingProgress(progress);
-      };
-      img.src = src;
-    });
-    
-    return () => clearInterval(initialInterval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // Simulate loading
+    if (initialLoading) {
+      const timer = setInterval(() => {
+        setLoadingProgress(prev => {
+          const newProgress = prev + 5;
+          if (newProgress >= 100) {
+            clearInterval(timer);
+            setTimeout(() => {
+              setInitialLoading(false);
+            }, 500);
+            return 100;
+          }
+          return newProgress;
+        });
+      }, 100);
+      return () => clearInterval(timer);
+    }
+  }, [initialLoading]);
 
   const toggleFavorite = (product) => {
     setFavorites(prevFavorites => {
@@ -293,436 +463,229 @@ export const TradePage = () => {
     setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
   };
 
-  return (
+  return initialLoading ? (
+    <LoadingPage progress={loadingProgress} />
+  ) : (
     <div className="index">
-      {initialLoading && <LoadingPage percentage={loadingProgress} />}
-      <CircularMenu1 />
       <EcoNavbar />
+      <div className="become-seller-btn-container">
+        <Link to="/seller" className="become-seller-btn">Become a Seller</Link>
+      </div>
       <div className="Categories-Intro">
-        <div className="Categories-Intro-Title">CATEGORIES</div>
-      </div>
-      <div className="scrolling-wrapper-flexbox">
-        {imagesData.map((card, index) => (
-          <EcommerceCard
-            key={index}
-            imgIndex={index}
-            title={card.title}
-            ImgSrc={card.imgSrc}
-          />
-        ))}
-      </div>
-
-      <TraditionalBoysGallery />
-
-      <div
-        className="hottest-section"
-        style={{
-          minHeight: "150vh",
-          width: "100%",
-          position: "relative",
-          padding: "40px 20px",
-          background: "linear-gradient(to right, #ffe5d9, #ffd6b3)",
-          boxShadow: "inset 0 0 50px rgba(255, 214, 179, 0.3)"
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: "20px",
-            left: "40px",
-            textAlign: "center"
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "Inknut Antiqua, serif",
-              fontSize: "48px",
-              background: "linear-gradient(45deg, #D32F2F, #FF5252)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-              textShadow: "2px 2px 8px rgba(211, 47, 47, 0.2)",
-              animation: "fadeInScale 1.2s ease-out",
-              marginBottom: "5px"
-            }}
-          >
-            Trade
-          </div>
-          <div
-            style={{
-              width: "100%",
-              height: "2px",
-              background: "linear-gradient(to right, #D32F2F, transparent)",
-              margin: "0 auto",
-              position: "relative",
-              animation: "fadeInScale 1.2s ease-out"
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: "-1px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "50%",
-                height: "4px",
-                background: "linear-gradient(to right, transparent, #FF5252, transparent)",
-                filter: "blur(1px)"
-              }}
-            ></div>
-          </div>
-        </div>
-
-        <style>
-          {`
-            @keyframes fadeInScale {
-              0% {
-                opacity: 0;
-                transform: scale(0.8) translateY(-20px);
-              }
-              100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-              }
-            }
-          `}
-        </style>
-
-        <div className="hottest-header">
-          <h2>Hottest Items</h2>
-          <p style={{ color: "#333" }}>Our most popular items this season, handpicked just for you</p>
-          <div className="hottest-filters">
-            <button className="filter-btn active">All</button>
-            <button className="filter-btn">Trending</button>
-            <button className="filter-btn">New Arrivals</button>
-            <button className="filter-btn">Best Sellers</button>
-          </div>
-        </div>
-
-        <div className="cart-bar" style={{
-          position: "absolute",
-          top: "80px",
-          right: "120px",
-          zIndex: "100",
-          width: "60px",
-          background: "rgba(255, 255, 255, 0.95)",
-          borderRadius: "30px",
-          boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "10px 0"
+        <h1 className="Categories-Intro-Title">HERITAGE MARKETPLACE</h1>
+        <p style={{ 
+          fontSize: '18px', 
+          maxWidth: '800px', 
+          margin: '0 auto',
+          textAlign: 'center',
+          color: '#555',
+          marginTop: '60px',
+          fontFamily: 'Poppins, sans-serif',
+          lineHeight: '1.6'
         }}>
-          <button 
-            onClick={() => setShowCart(!showCart)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "24px",
-              color: "#666",
-              position: "relative",
-              width: "40px",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
-            🛒
-            {cartItems.length > 0 && (
-              <span style={{
-                position: "absolute",
-                top: "-5px",
-                right: "-5px",
-                background: "#ff4444",
-                color: "white",
-                borderRadius: "50%",
-                width: "20px",
-                height: "20px",
-                fontSize: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
-                {cartItems.length}
-              </span>
-            )}
-          </button>
-          
-          {showCart && (
-            <div style={{
-              position: "absolute",
-              top: "60px",
-              right: "0",
-              background: "white",
-              boxShadow: "0 3px 10px rgba(0,0,0,0.2)",
-              borderRadius: "10px",
-              width: "300px",
-              maxHeight: "500px",
-              overflowY: "auto",
-              padding: "15px"
-            }}>
-              <div style={{
-                borderBottom: "1px solid #eee",
-                paddingBottom: "10px",
-                marginBottom: "10px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center"
-              }}>
-                <h3 style={{ margin: 0 }}>Shopping Cart</h3>
-                <button 
-                  onClick={() => setShowCart(false)}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    fontSize: "18px",
-                    color: "#666"
-                  }}
-                >
-                  ✕
-                </button>
-              </div>
-              
-              {cartItems.length === 0 ? (
-                <p style={{ textAlign: "center", color: "#666" }}>Your cart is empty</p>
-              ) : (
-                <>
-                  <div style={{
-                    maxHeight: "300px",
-                    overflowY: "auto",
-                    marginBottom: "15px"
-                  }}>
-                    {cartItems.map(item => (
-                      <div key={item.id} style={{
-                        display: "flex",
-                        alignItems: "center",
-                        padding: "10px",
-                        borderBottom: "1px solid #eee"
-                      }}>
-                        <img 
-                          src={item.image} 
-                          alt={item.name}
-                          style={{
-                            width: "50px",
-                            height: "50px",
-                            objectFit: "cover",
-                            marginRight: "15px",
-                            borderRadius: "4px"
-                          }}
-                        />
-                        <div style={{ flex: 1 }}>
-                          <h4 style={{ margin: "0 0 5px 0", fontSize: "14px" }}>{item.name}</h4>
-                          <p style={{ margin: 0, color: "#4CAF50", fontWeight: "bold", fontSize: "14px" }}>₹{item.price}</p>
-                        </div>
-                        <button 
-                          onClick={() => toggleCart(item)}
-                          style={{
-                            background: "none",
-                            border: "none",
-                            color: "#ff4444",
-                            cursor: "pointer",
-                            fontSize: "16px"
-                          }}
-                        >
-                          ✕
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div style={{
-                    padding: "10px 0",
-                    borderTop: "1px solid #eee",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontWeight: "bold",
-                    fontSize: "16px"
-                  }}>
-                    <span>Total:</span>
-                    <span>₹{cartItems.reduce((sum, item) => sum + item.price, 0)}</span>
-                  </div>
-                  
-                  <button 
-                    onClick={openCartWindow}
-                    style={{
-                      width: "100%",
-                      padding: "10px",
-                      background: "linear-gradient(to right, #66BB6A, #43A047)",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      fontWeight: "bold",
-                      cursor: "pointer",
-                      marginTop: "10px"
-                    }}
-                  >
-                    Checkout
-                  </button>
-                </>
-              )}
-            </div>
-          )}
-        </div>
+          Explore India's rich cultural heritage through our carefully curated collection of 
+          traditional clothing, authentic spices, handcrafted instruments, and exquisite handicrafts.
+        </p>
+      </div>
 
-        <div className="favorites-bar" style={{
-          position: "absolute",
-          top: "80px",
-          right: "40px",
-          zIndex: "100",
-          width: "60px",
-          background: "rgba(255, 255, 255, 0.95)",
-          borderRadius: "30px",
-          boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "10px 0"
-        }}>
+      <div className="card-container-carousel">
+        <div className="scrolling-wrapper-flexbox">
+          {imagesData.map((image, index) => (
+            <EcommerceCard
+              key={index}
+              imgSrc={image.imgSrc}
+              title={image.title}
+              className={index % 2 === 0 ? "overlap-eco-card" : "overlap-eco-card2"}
+              onClick={() => setActiveCategory(image.title)}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="hottest-section">
+        <div className="shopping-tools">
           <button 
             onClick={() => setShowFavorites(!showFavorites)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "24px",
-              color: "#ff4444",
-              position: "relative",
-              width: "40px",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            }}
+            className="shopping-btn wishlist-toggle"
+            aria-label="View favorites"
           >
-            ♥
+            <i className="heart-icon">♥</i>
             {favorites.length > 0 && (
-              <span style={{
-                position: "absolute",
-                top: "-5px",
-                right: "-5px",
-                background: "#ff4444",
-                color: "white",
-                borderRadius: "50%",
-                width: "20px",
-                height: "20px",
-                fontSize: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
-                {favorites.length}
-              </span>
+              <span className="tool-badge">{favorites.length}</span>
             )}
           </button>
           
-          {showFavorites && (
-            <div style={{
-              position: "absolute",
-              top: "60px",
-              right: "0",
-              background: "white",
-              boxShadow: "0 3px 10px rgba(0,0,0,0.2)",
-              borderRadius: "10px",
-              width: "300px",
-              maxHeight: "500px",
-              overflowY: "auto",
-              padding: "15px"
-            }}>
-              <div style={{
-                borderBottom: "1px solid #eee",
-                paddingBottom: "10px",
-                marginBottom: "10px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center"
-              }}>
-                <h3 style={{ margin: 0 }}>Favorites</h3>
-                <button 
-                  onClick={() => setShowFavorites(false)}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    fontSize: "18px",
-                    color: "#666"
-                  }}
-                >
-                  ✕
-                </button>
+          <button 
+            onClick={() => setShowCart(!showCart)}
+            className="shopping-btn cart-toggle"
+            aria-label="View cart"
+          >
+            <i className="cart-icon">🛒</i>
+            {cartItems.length > 0 && (
+              <span className="tool-badge">{cartItems.length}</span>
+            )}
+          </button>
+        </div>
+
+        {showFavorites && (
+          <div className="favorites-panel">
+            <div className="panel-header">
+              <h3>Your Favorites</h3>
+              <button onClick={() => setShowFavorites(false)} className="close-btn">×</button>
+            </div>
+            {favorites.length === 0 ? (
+              <div className="empty-message">
+                <p>You haven't added any items to your favorites yet.</p>
+                <i className="empty-icon">♥</i>
               </div>
-              
-              {favorites.length === 0 ? (
-                <p style={{ textAlign: "center", color: "#666" }}>You haven't added any items to your favorites yet</p>
-              ) : (
-                <div style={{
-                  maxHeight: "300px",
-                  overflowY: "auto"
-                }}>
-                  {favorites.map(item => (
-                    <div key={item.id} style={{
-                      display: "flex",
-                      alignItems: "center",
-                      padding: "10px",
-                      borderBottom: "1px solid #eee"
-                    }}>
-                      <img 
-                        src={item.image} 
-                        alt={item.name}
-                        style={{
-                          width: "50px",
-                          height: "50px",
-                          objectFit: "cover",
-                          marginRight: "15px",
-                          borderRadius: "4px"
-                        }}
-                      />
-                      <div style={{ flex: 1 }}>
-                        <h4 style={{ margin: "0 0 5px 0", fontSize: "14px" }}>{item.name}</h4>
-                        <p style={{ margin: 0, color: "#4CAF50", fontWeight: "bold", fontSize: "14px" }}>₹{item.price}</p>
-                      </div>
-                      <button 
-                        onClick={() => toggleFavorite(item)}
-                        style={{
-                          background: "none",
-                          border: "none",
-                          color: "#ff4444",
-                          cursor: "pointer",
-                          fontSize: "18px"
-                        }}
-                      >
-                        ✕
+            ) : (
+              <div className="panel-items">
+                {favorites.map(item => (
+                  <div key={item.id} className="panel-item">
+                    <img src={item.image} alt={item.name} className="item-thumbnail" />
+                    <div className="item-info">
+                      <h4>{item.name}</h4>
+                      <div className="item-price">₹{item.price}</div>
+                    </div>
+                    <div className="item-actions">
+                      <button onClick={() => toggleCart(item)} className="action-btn add-btn">
+                        {cartItems.some(cartItem => cartItem.id === item.id) ? '✓' : '+'}
                       </button>
+                      <button onClick={() => toggleFavorite(item)} className="action-btn remove-btn">×</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {showCart && (
+          <div className="cart-panel">
+            <div className="panel-header">
+              <h3>Your Shopping Cart</h3>
+              <button onClick={() => setShowCart(false)} className="close-btn">×</button>
+            </div>
+            {cartItems.length === 0 ? (
+              <div className="empty-message">
+                <p>Your cart is empty.</p>
+                <i className="empty-icon">🛒</i>
+              </div>
+            ) : (
+              <>
+                <div className="panel-items">
+                  {cartItems.map(item => (
+                    <div key={item.id} className="panel-item">
+                      <img src={item.image} alt={item.name} className="item-thumbnail" />
+                      <div className="item-info">
+                        <h4>{item.name}</h4>
+                        <div className="item-price">₹{item.price}</div>
+                      </div>
+                      <button onClick={() => toggleCart(item)} className="action-btn remove-btn">×</button>
                     </div>
                   ))}
                 </div>
-              )}
-            </div>
+                <div className="cart-total">
+                  <span>Total:</span>
+                  <span>₹{cartItems.reduce((sum, item) => sum + item.price, 0)}</span>
+                </div>
+                <button className="checkout-btn" onClick={openCartWindow}>
+                  Proceed to Checkout
+                </button>
+              </>
+            )}
+          </div>
+        )}
+
+        <div className="hottest-header">
+          <h2>Featured Collection</h2>
+          <p>Discover the perfect blend of tradition and craftsmanship</p>
+          <div className="hottest-filters">
+            <button 
+              className={`filter-btn ${activeCategory === "All" ? "active" : ""}`} 
+              onClick={() => setActiveCategory("All")}
+            >
+              All
+            </button>
+            <button 
+              className={`filter-btn ${activeCategory === "Clothes" ? "active" : ""}`}
+              onClick={() => setActiveCategory("Clothes")}
+            >
+              Clothes
+            </button>
+            <button 
+              className={`filter-btn ${activeCategory === "Spices" ? "active" : ""}`}
+              onClick={() => setActiveCategory("Spices")}
+            >
+              Spices
+            </button>
+            <button 
+              className={`filter-btn ${activeCategory === "Instruments" ? "active" : ""}`}
+              onClick={() => setActiveCategory("Instruments")}
+            >
+              Instruments
+            </button>
+            <button 
+              className={`filter-btn ${activeCategory === "HandiCrafts" ? "active" : ""}`}
+              onClick={() => setActiveCategory("HandiCrafts")}
+            >
+              Handicrafts
+            </button>
+          </div>
+        </div>
+
+        <div className="category-description">
+          {activeCategory === "All" && (
+            <p>Explore our complete collection of authentic Indian cultural treasures</p>
+          )}
+          {activeCategory === "Clothes" && (
+            <p>Traditional attire showcasing India's rich textile heritage and craftsmanship</p>
+          )}
+          {activeCategory === "Spices" && (
+            <p>Authentic spices that bring the essence of Indian cuisine to your kitchen</p>
+          )}
+          {activeCategory === "Instruments" && (
+            <p>Handcrafted musical instruments that carry the soul of Indian classical music</p>
+          )}
+          {activeCategory === "HandiCrafts" && (
+            <p>Exquisite handicrafts that showcase the unparalleled skill of Indian artisans</p>
           )}
         </div>
 
         <div className="Hottest-card-containers">
-          {products.map(product => (
+          {products
+            .filter(product => activeCategory === "All" || product.category === activeCategory)
+            .map(product => (
             <div key={product.id} className="product-card">
-              <div className="product-badge">{product.badge}</div>
-              <div className="product-image" style={{ 
-                backgroundImage: `url('${product.image}')`,
-                backgroundSize: "contain",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat"
-              }}></div>
+              <span className={`product-badge ${product.badge.toLowerCase()}`}>{product.badge}</span>
+              <div className="product-image-container">
+                <img src={product.image} alt={product.name} className="product-image" />
+                <div className="quick-actions">
+                  <button 
+                    className={`quick-action-btn favorite-btn ${favorites.some(fav => fav.id === product.id) ? 'active' : ''}`} 
+                    onClick={() => toggleFavorite(product)}
+                  >
+                    ♥
+                  </button>
+                  <button 
+                    className={`quick-action-btn cart-btn ${cartItems.some(item => item.id === product.id) ? 'active' : ''}`}
+                    onClick={() => toggleCart(product)}
+                  >
+                    {cartItems.some(item => item.id === product.id) ? '✓' : '+'}
+                  </button>
+                </div>
+              </div>
               <div className="product-details">
+                <span className="product-category">{product.category}</span>
                 <h3>{product.name}</h3>
                 <div className="product-price">
                   <span className="actual-price">₹{product.price}</span>
                   <span className="original-price">₹{product.originalPrice}</span>
-                  <span className="discount">{product.discount} off</span>
+                  <span className="discount">-{product.discount}</span>
                 </div>
                 <div className="product-rating">
-                  <span className="stars">{"★".repeat(product.rating)}{"☆".repeat(5-product.rating)}</span>
-                  <span className="reviews">({product.reviews})</span>
+                  <div className="stars">{'★'.repeat(Math.floor(product.rating))}{'☆'.repeat(5-Math.floor(product.rating))}</div>
+                  <span className="reviews">({product.reviews} reviews)</span>
                 </div>
               </div>
               <div className="product-actions">
@@ -732,7 +695,7 @@ export const TradePage = () => {
                   style={{
                     background: cartItems.some(item => item.id === product.id) 
                       ? 'linear-gradient(135deg, #66BB6A, #43A047)'
-                      : 'linear-gradient(135deg, #E57373, #D50000)',
+                      : 'linear-gradient(135deg, #4A148C, #7B1FA2)',
                   }}
                 >
                   {cartItems.some(item => item.id === product.id) ? 'In Cart' : 'Add to Cart'}
@@ -740,9 +703,6 @@ export const TradePage = () => {
                 <button 
                   className={`wishlist-btn ${favorites.some(fav => fav.id === product.id) ? 'active' : ''}`}
                   onClick={() => toggleFavorite(product)}
-                  style={{
-                    color: favorites.some(fav => fav.id === product.id) ? '#ff4444' : '#666'
-                  }}
                 >
                   ♥
                 </button>
@@ -752,10 +712,7 @@ export const TradePage = () => {
         </div>
       </div>
 
-      <div
-        className="weHaveMoreSection"
-        style={{ width: "100%", overflowX: "auto" }}
-      >
+      <div className="weHaveMoreSection" style={{ width: "100%", overflowX: "auto" }}>
         {WeHaveMoreImageData.map((image, index) => (
           <div
             key={index}
@@ -772,6 +729,45 @@ export const TradePage = () => {
           ></div>
         ))}
       </div>
+
+      <footer className="trade-footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>Heritage Marketplace</h3>
+            <p>Celebrating India's rich cultural heritage through authentic products</p>
+          </div>
+          <div className="footer-section">
+            <h4>Categories</h4>
+            <ul>
+              <li>Traditional Clothing</li>
+              <li>Authentic Spices</li>
+              <li>Musical Instruments</li>
+              <li>Handcrafted Items</li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Customer Care</h4>
+            <ul>
+              <li>Shipping Information</li>
+              <li>Returns Policy</li>
+              <li>Track Your Order</li>
+              <li>Contact Support</li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>For Sellers</h4>
+            <ul>
+              <li><Link to="/seller" className="footer-link">Seller Dashboard</Link></li>
+              <li><Link to="/seller" className="footer-link">Sell Your Products</Link></li>
+              <li><Link to="/seller" className="footer-link">Seller Guidelines</Link></li>
+              <li><Link to="/seller" className="footer-link">Payment Info</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2023 Heritage Marketplace. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };

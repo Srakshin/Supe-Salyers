@@ -1,13 +1,11 @@
 import "../styles/EcommerceCard.css";
 import flower from "../assets/ecom/Flower.png"
 
-
-export const EcommerceCard = ({ImgSrc, imgIndex, title}) => {
+export const EcommerceCard = ({ imgSrc, title, className, onClick }) => {
   return (
-    <div className="overlap-eco-card"
-    style={{
-      scale: imgIndex === 3 ? "1.2" : "1", 
-    }}
+    <div 
+      className={className || "overlap-eco-card"} 
+      onClick={onClick}
     >
       <div className="eco-card-title">
         {title}
@@ -19,8 +17,8 @@ export const EcommerceCard = ({ImgSrc, imgIndex, title}) => {
 
       <img
         className="eco-card-image"
-        alt="Rectangle"
-        src={ImgSrc}
+        alt={title}
+        src={imgSrc}
       />
     </div>
   );

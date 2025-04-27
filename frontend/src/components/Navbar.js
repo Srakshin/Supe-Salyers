@@ -16,7 +16,7 @@ function EcoNavbar() {
             <a href="/india">Explore India</a>
           </li>
           <li>
-            <a href="/hottest">Hottest</a>
+            <a href="/seller">Seller Page</a>
           </li>
           <li>
             <a href="#my-footer">About Us!</a>
