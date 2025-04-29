@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@splinetool/react-spline": "^2.2.1",
     "@splinetool/runtime": "^0.9.475",
     "aos": "^2.3.4",
