@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { checkSpeechRecognitionSupport, requestMicrophonePermission } from '../utils/speechRecognitionPolyfill';
 import 'regenerator-runtime/runtime';
 import './GlobalVoiceControl.css';
@@ -10,11 +10,9 @@ import './GlobalVoiceControl.css';
  */
 const GlobalVoiceControl = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const [isListening, setIsListening] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [message, setMessage] = useState('');
-  const [activatedMenu, setActivatedMenu] = useState(false);
   const routes = {
     home: '/',
     translate: '/translate',
@@ -121,7 +119,7 @@ const GlobalVoiceControl = () => {
     }
   ];
 
-  const { transcript, browserSupportsSpeechRecognition, resetTranscript, listening, isMicrophoneAvailable } = useSpeechRecognition({ commands });
+  const { transcript, browserSupportsSpeechRecognition, resetTranscript, listening } = useSpeechRecognition({ commands });
   
   // Initialize and check browser support
   useEffect(() => {
@@ -149,7 +147,7 @@ const GlobalVoiceControl = () => {
       stopListening();
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [browserSupportsSpeechRecognition]);
   
   // Sync our state with the actual listening state
   useEffect(() => {
@@ -222,7 +220,6 @@ const GlobalVoiceControl = () => {
       if (menuToggler) {
         const newState = forceState !== undefined ? forceState : !menuToggler.checked;
         menuToggler.checked = newState;
-        setActivatedMenu(newState);
         setMessage(newState ? 'Menu opened' : 'Menu closed');
         
         // Also dispatch a custom event that our CircularMenu components can listen for

@@ -9,7 +9,6 @@ import useCircularMenuVoice from "./CircularMenuVoice";
 
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
-import { PiMapTrifoldLight } from "react-icons/pi";
 
 function CircularMenu3() {
   const [showChat, setShowChat] = useState(false);
@@ -34,7 +33,7 @@ function CircularMenu3() {
         <ul style={{ transition: "all 300ms linear" }}>
           {/* Chat icon */}
           <li className="menu-item" data-voice-item="chat">
-            <a onClick={toggleChat} style={{ color: "white", fontSize: "2.0rem" }} data-voice-action="chat">
+            <a href="#chat" onClick={toggleChat} style={{ color: "white", fontSize: "2.0rem" }} data-voice-action="chat">
               <PiChatsCircleThin />
             </a>
           </li>
@@ -48,7 +47,7 @@ function CircularMenu3() {
           
           {/* Translate icon */}
           <li className="menu-item" data-voice-item="translate">
-            <a href="https://heritagetranslator.streamlit.app" target="_blank" data-voice-action="translate">
+            <a href="https://heritagetranslator.streamlit.app" target="_blank" rel="noreferrer" data-voice-action="translate">
               <MdTranslate/>
             </a>
           </li>

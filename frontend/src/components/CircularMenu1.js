@@ -32,14 +32,14 @@ function CircularMenu1() {
         <ul style={{ transition: "all 300ms linear" }}>
           {/* Chat icon */}
           <li className="menu-item" data-voice-item="chat">
-            <a onClick={toggleChat} style={{ color: "white", fontSize: "2.0rem" }} data-voice-action="chat">
+            <a href="#chat" onClick={toggleChat} style={{ color: "white", fontSize: "2.0rem" }} data-voice-action="chat">
               <PiChatsCircleThin />
             </a>
           </li>
           
           {/* Translate icon */}
           <li className="menu-item" data-voice-item="translate">
-            <a href="https://heritagetranslator.streamlit.app" target="_blank" data-voice-action="translate">
+            <a href="https://heritagetranslator.streamlit.app" target="_blank" rel="noreferrer" data-voice-action="translate">
               <MdTranslate/>
             </a>
           </li>

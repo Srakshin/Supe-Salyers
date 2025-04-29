@@ -16,8 +16,6 @@ import arrowBGNew from "../assets/HomePage/RamHoverBG_Large.png";
 import arrowRotate from "../assets/HomePage/arrowRotate.png";
 import rathBG from "../assets/HomePage/rathBG.png";
 import rathFG from "../assets/HomePage/rathFG.png";
-import flybird from "../assets/HomePage/flybird.gif";
-import birdy from "../assets/HomePage/birdy.gif";
 
 // New slideshow images
 import slide1 from "../assets/Home/1.1.avif";
@@ -107,7 +105,6 @@ const ImageSlideshow = ({ slides }) => {
 };
 
 const Home = () => {
-  const [arrowBGNew1, setRathBgSrc] = useState(`${arrowBGNew}`);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   
@@ -259,7 +256,7 @@ const Home = () => {
     const RathBGImg = new Image();
     RathBGImg.src = "../assets/HomePage/RamHoverBG.png";
     RathBGImg.onload = () => {
-      setRathBgSrc(RathBGImg.src);
+      // arrowBGNewRef.current.src = RathBGImg.src;
     };
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -501,7 +498,7 @@ const Home = () => {
 
       <section className="section2">
         <img
-          src={arrowBGNew1}
+          src={arrowBGNew}
           id="arrowBG123"
           className="arrowBGNew"
           alt="Arrow BG Sky"

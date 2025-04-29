@@ -19,6 +19,7 @@ export function OutroTransition() {
       <img
         className={"flag flag-1"}
         src={Flag1}
+        alt="Indian Flag Layer 1"
         width={"75%"}
         style={{
           position: "absolute",
@@ -31,6 +32,7 @@ export function OutroTransition() {
       <img
         className={"flag flag-2"}
         src={Flag2}
+        alt="Indian Flag Layer 2"
         width={"72%"}
         style={{
           position: "absolute",
@@ -42,6 +44,7 @@ export function OutroTransition() {
       <img
         className={"flag flag-3"}
         src={Flag3}
+        alt="Indian Flag Layer 3"
         width={"100%"}
         style={{
           position: "absolute",

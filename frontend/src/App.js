@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Translator from "./pages/Translator";
 // import FloatingChat from "./components/FloatingChat";
@@ -25,8 +25,6 @@ import Itinerary from "./pages/Itinerary";
 import SellerPage from './pages/SellerPage';
 
 const App = () => {
-  const location = useLocation();
-  
   useEffect(() => {
     // Initialize AOS with performance optimizations
     AOS.init({

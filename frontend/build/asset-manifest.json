@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.431ad223.css",
-    "main.js": "/static/js/main.77919908.js",
+    "main.css": "/static/css/main.682283fb.css",
+    "main.js": "/static/js/main.6e297ea3.js",
     "static/media/ramayanBG.png": "/static/media/ramayanBG.465110271325eb49093c.png",
     "static/media/bg_video.mp4": "/static/media/bg_video.1eee5b311e2c025f289e.mp4",
     "static/media/full.png": "/static/media/full.88de44a54258ff745593.png",
@@ -20,10 +20,8 @@
     "static/media/RamHoverBG_Large.png": "/static/media/RamHoverBG_Large.68d760aa79a386b13c12.png",
     "static/media/arrowFG.png": "/static/media/arrowFG.b4d4e02aabd8f8da8ebb.png",
     "static/media/ramayanFG.png": "/static/media/ramayanFG.cea76c74f28cc233d65f.png",
-    "static/media/flybird.gif": "/static/media/flybird.ea2ff1de87ae0d55b3d3.gif",
     "static/media/3.2.avif": "/static/media/3.2.b8b7185acfd3d957d3c9.avif",
     "static/media/ecombg.jpg": "/static/media/ecombg.c69ff922f626a9ab17f0.jpg",
-    "static/media/birdy.gif": "/static/media/birdy.c8c9129a8da1f8a3e434.gif",
     "static/media/4.1.avif": "/static/media/4.1.6044798c5273e738eaa4.avif",
     "static/media/clouds_2.png": "/static/media/clouds_2.42189f40a3bbaaa07322.png",
     "static/media/Rectangle 4.png": "/static/media/Rectangle 4.632a867da8971a50ca9d.png",
@@ -63,11 +61,11 @@
     "static/media/11.3.jpg": "/static/media/11.3.7a5ff857c9bfd3df5c79.jpg",
     "static/media/9.3.jpg": "/static/media/9.3.29644776078cbec1a01f.jpg",
     "index.html": "/index.html",
-    "main.431ad223.css.map": "/static/css/main.431ad223.css.map",
-    "main.77919908.js.map": "/static/js/main.77919908.js.map"
+    "main.682283fb.css.map": "/static/css/main.682283fb.css.map",
+    "main.6e297ea3.js.map": "/static/js/main.6e297ea3.js.map"
   },
   "entrypoints": [
-    "static/css/main.431ad223.css",
-    "static/js/main.77919908.js"
+    "static/css/main.682283fb.css",
+    "static/js/main.6e297ea3.js"
   ]
 }

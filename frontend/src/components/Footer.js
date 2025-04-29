@@ -98,8 +98,8 @@ export const Footer = () => {
           <div className="footer-copyright-section">
             <h2 className="footer-title centered-title">Copyright</h2>
             <ul className="footer-list centered-list">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Use</a></li>
+              <li><a href="/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/terms-of-use">Terms of Use</a></li>
             </ul>
           </div>
         </div>

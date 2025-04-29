@@ -68,7 +68,7 @@ const VoiceCompat = () => {
       continuousListening: supportInfo.continuousListening,
       interimResults: supportInfo.interimResults
     });
-  }, []);
+  }, [compatInfo]);
 
   const checkMicrophonePermission = async () => {
     setTestStep(1);
