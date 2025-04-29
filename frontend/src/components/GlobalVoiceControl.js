@@ -15,26 +15,12 @@ const GlobalVoiceControl = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [message, setMessage] = useState('');
   const [activatedMenu, setActivatedMenu] = useState(false);
-  const [availableRoutes] = useState({
+  const routes = {
     home: '/',
     translate: '/translate',
-    translator: '/translate',
-    travel: '/triptuner',
-    trip: '/triptuner',
-    triptuner: '/triptuner',
-    itinerary: '/itinerary',
-    map: '/itinerary',
     trade: '/trade',
-    shop: '/trade',
-    market: '/trade',
-    streetview: '/streetview',
-    street: '/streetview',
-    compatibility: '/voice-compat',
-    test: '/voice-compat',
-    demo: '/voice-demo',
-    control: '/voice-control',
-    chat: null // Special command for the chat feature
-  });
+    itinerary: '/itinerary'
+  };
 
   // Commands that the voice recognition will respond to
   const commands = [
@@ -205,23 +191,23 @@ const GlobalVoiceControl = () => {
     setMessage(`Navigating to ${dest}...`);
     
     // Check if the destination exists in our route map
-    if (availableRoutes[dest]) {
-      if (availableRoutes[dest] === null) {
+    if (routes[dest]) {
+      if (routes[dest] === null) {
         // Special case for items without direct routes like "chat"
         if (dest === 'chat') {
           handleChatToggle(true);
         }
       } else {
-        navigate(availableRoutes[dest]);
+        navigate(routes[dest]);
       }
     } else {
       // Try to find a close match
-      const possibleMatches = Object.keys(availableRoutes).filter(key => 
+      const possibleMatches = Object.keys(routes).filter(key => 
         key.includes(dest) || dest.includes(key)
       );
       
       if (possibleMatches.length > 0) {
-        navigate(availableRoutes[possibleMatches[0]]);
+        navigate(routes[possibleMatches[0]]);
       } else {
         setMessage(`I don't know how to navigate to ${dest}`);
       }
@@ -351,7 +337,7 @@ const GlobalVoiceControl = () => {
           <div className="voice-commands">
             <h5>Available Commands:</h5>
             <ul>
-              <li>"go to home/translate/trade/itinerary/triptuner"</li>
+              <li>"go to home/translate/trade/itinerary"</li>
               <li>"show menu" / "hide menu"</li>
               <li>"select translate/trade/itinerary/trip"</li>
               <li>"open chat" / "close chat"</li>

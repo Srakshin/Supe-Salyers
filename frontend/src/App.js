@@ -9,14 +9,6 @@ import VoiceControlDemo from "./pages/VoiceControlDemo";
 import VoiceCompat from "./pages/VoiceCompat";
 import GlobalVoiceControl from "./components/GlobalVoiceControl";
 
-// TripTuner Pages
-import TripHome from "./pages/TripHome";
-import Customize from "./pages/Customize";
-import Summary from "./pages/Summary";
-import Broker from "./pages/Broker";
-// import Login from "./pages/Login";
-// import LoadingPage from "./pages/LoadingPage";
-
 // STATES
 
 // import { Ecommerce } from "./pages/Ecommerce";
@@ -30,8 +22,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import Itinerary from "./pages/Itinerary"; 
-import BookingConfirmation from "./pages/BookingConfirmation";
-import Login from "./pages/Login";
 import SellerPage from './pages/SellerPage';
 
 const App = () => {
@@ -64,11 +54,6 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Check if current route is a TripTuner route
-  const isTripTunerRoute = location.pathname.includes('/triptuner') || 
-                           location.pathname === '/login' || 
-                           location.pathname === '/booking-confirmation';
-
   return (
     <>
       <Routes>
@@ -83,14 +68,6 @@ const App = () => {
         <Route path="/voice-demo" element={<VoiceControlDemo />} />
         <Route path="/voice-compat" element={<VoiceCompat />} />
         <Route path="/seller" element={<SellerPage />} />
-
-        {/* TripTuner Routes - Organized by user flow */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/triptuner" element={<TripHome />} />
-        <Route path="/triptuner/customize" element={<Customize />} />
-        <Route path="/triptuner/broker" element={<Broker />} />
-        <Route path="/triptuner/summary" element={<Summary />} />
-        <Route path="/booking-confirmation" element={<BookingConfirmation />} />
       </Routes>
       
       {/* Global Voice Control Component - Available on all pages */}

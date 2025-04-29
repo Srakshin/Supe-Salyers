@@ -46,7 +46,7 @@ function CircularMenu1() {
           
           {/* Trip planner icon */}
           <li className="menu-item" data-voice-item="trip">
-            <a href="/triptuner" data-voice-action="trip">
+            <a href="/" data-voice-action="home">
               <GiDirectionSigns/>
             </a>
           </li>
