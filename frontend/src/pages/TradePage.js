@@ -1,13 +1,14 @@
 import "../styles/TradePage.css";
 import { EcommerceCard } from "../components/EcommerceCard";
 import { useState, useEffect } from "react";
-import CircularMenu1 from "../components/CircularMenu2";
+
 import imagesData from "../assets/ecom/E_COMMERCE_CardData/eComCardData";
 import { WeHaveMoreImageData } from "../assets/ecom/WeHaveMore/WeHaveMoreData";
 import EcoNavbar from "../components/Navbar";
-import TraditionalBoysGallery from "../components/TraditionalBoysGallery";
+
 import { LoadingPage } from "./LoadingPage";
 import { Link } from "react-router-dom";
+import CircularMenu2 from "../components/CircularMenu2";
 
 export const TradePage = () => {
   const [favorites, setFavorites] = useState([]);
@@ -468,6 +469,7 @@ export const TradePage = () => {
   ) : (
     <div className="index">
       <EcoNavbar />
+      <CircularMenu2/>
       <div className="become-seller-btn-container">
         <Link to="/seller" className="become-seller-btn">Become a Seller</Link>
       </div>

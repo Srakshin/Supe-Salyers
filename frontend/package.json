@@ -32,11 +32,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-  "build": "react-scripts build"
-    
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "serve": "serve -s build",
+    "deploy:prod": "npm run build && npm run serve"
   },
-
-  
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -62,6 +64,8 @@
     "atropos": "^2.0.2",
     "leaflet": "^1.9.4",
     "react-leaflet": "^4.2.1",
+    "serve": "^14.2.1",
+    "source-map-explorer": "^2.5.3",
     "tailwindcss": "^3.3.3"
   },
   "browser": {
