@@ -58,7 +58,7 @@ const App = () => {
         {/* Main Routes */}
         <Route path="/" index element={<Home />} />
         <Route path="/trans" element={<OutroTransition />} />
-        <Route path="https://srakshinfrontend.onrender.com/trade" element={<TradePage />} />
+        <Route path="/trade" element={<TradePage />} />
         <Route path="/itinerary" element={<Itinerary />} /> 
         <Route path="/translate" element={<Translator/>} />
         <Route path="/streetview" element={<StreetView />} />

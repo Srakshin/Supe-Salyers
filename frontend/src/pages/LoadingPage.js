@@ -1,5 +1,5 @@
 import "../styles/LoadingPage.css"
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export const LoadingPage = ({percentage}) => {
   

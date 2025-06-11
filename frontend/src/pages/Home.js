@@ -16,6 +16,8 @@ import arrowBGNew from "../assets/HomePage/RamHoverBG_Large.png";
 import arrowRotate from "../assets/HomePage/arrowRotate.png";
 import rathBG from "../assets/HomePage/rathBG.png";
 import rathFG from "../assets/HomePage/rathFG.png";
+import flybird from "../assets/HomePage/flybird.gif";
+import birdy from "../assets/HomePage/birdy.gif";
 
 // New slideshow images
 import slide1 from "../assets/Home/1.1.avif";
@@ -440,7 +442,7 @@ const Home = () => {
     <div>
       {!imagesLoaded && <LoadingPage percentage={loadingProgress} />}
       <CircularMenu1 />
-      {/* <section className="section" id="top-section">
+      <section className="section" id="top-section">
         <img src={bg} id="bg" alt="bg" ref={bgRef} />
         <h5 id="text" ref={textRef}>INDIAN HERITAGE</h5>
         <img src={fg} alt="man2" id="man" ref={manRef} />
@@ -532,7 +534,8 @@ const Home = () => {
         ref={arrowRef}
       >
 
-      </svg> */}
+      </svg> 
+      
      
       <div className="modern-section">
         <div className="modern-heading">
